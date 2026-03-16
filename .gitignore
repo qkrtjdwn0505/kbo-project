@@ -1,0 +1,29 @@
+# 환경 변수 (보안!)
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Node.js
+node_modules/
+src/frontend/build/
+
+# DB
+*.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 로그
+*.log
+logs/
