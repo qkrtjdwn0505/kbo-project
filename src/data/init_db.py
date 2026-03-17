@@ -164,7 +164,7 @@ def init_db():
         era REAL, whip REAL,
         fip REAL, xfip REAL, war REAL, babip REAL, lob_pct REAL,
         k_per_9 REAL, bb_per_9 REAL, hr_per_9 REAL, k_bb_ratio REAL,
-        era_vs_lhb REAL, era_vs_rhb REAL, era_home REAL, era_away REAL,
+        avg_vs_lhb REAL, avg_vs_rhb REAL, era_home REAL, era_away REAL,
         is_starter BOOLEAN,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         UNIQUE(player_id, season)

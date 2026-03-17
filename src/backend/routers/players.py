@@ -392,8 +392,8 @@ def get_player_splits(
         if row is None:
             raise HTTPException(status_code=404, detail="해당 시즌 기록이 없습니다")
         splits = [
-            SplitPair(label="vs 좌타", stat_name="era", value=row["era_vs_lhb"] or 0.0),
-            SplitPair(label="vs 우타", stat_name="era", value=row["era_vs_rhb"] or 0.0),
+            SplitPair(label="vs 좌타", stat_name="avg", value=row["avg_vs_lhb"] or 0.0),
+            SplitPair(label="vs 우타", stat_name="avg", value=row["avg_vs_rhb"] or 0.0),
             SplitPair(label="홈", stat_name="era", value=row["era_home"] or 0.0),
             SplitPair(label="원정", stat_name="era", value=row["era_away"] or 0.0),
         ]
