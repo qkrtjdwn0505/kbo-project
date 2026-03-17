@@ -2,6 +2,7 @@
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 
@@ -38,4 +39,16 @@ def health_check():
 # 프로덕션: React 빌드 정적 파일 서빙
 build_path = Path("src/frontend/build")
 if build_path.exists():
-    app.mount("/", StaticFiles(directory=str(build_path), html=True), name="static")
+    app.mount("/assets", StaticFiles(directory=str(build_path / "assets")), name="assets")
+
+
+@app.get("/{full_path:path}")
+async def spa_fallback(full_path: str):
+    """SPA 폴백 — /assets/* 외 모든 경로에서 index.html 반환"""
+    candidate = build_path / full_path
+    if candidate.is_file():
+        return FileResponse(candidate)
+    index = build_path / "index.html"
+    if index.exists():
+        return FileResponse(index)
+    return {"detail": "Frontend not built. Run: cd src/frontend && npm run build"}
