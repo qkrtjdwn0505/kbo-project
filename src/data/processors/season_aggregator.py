@@ -207,9 +207,76 @@ class SeasonAggregator:
             count += 1
 
         conn.commit()
+        self._calculate_batter_splits(conn, season)
         conn.close()
         logger.info("타자 시즌 집계 완료: %d시즌, %d명", season, count)
         return count
+
+    def _calculate_batter_splits(self, conn: sqlite3.Connection, season: int) -> None:
+        """타자 스플릿 OPS 계산 → batter_season UPDATE.
+
+        계산 가능한 스플릿:
+          - ops_vs_lhp: opponent_pitcher_hand = '좌투'
+          - ops_vs_rhp: opponent_pitcher_hand = '우투'
+          - ops_home:   is_home = 1
+          - ops_away:   is_home = 0
+
+        계산 불가 (NULL 유지):
+          - ops_risp: runners_on_scoring이 NULL (play-by-play 미수집)
+        """
+        # (컬럼명, WHERE 조건) — 값은 모두 코드 내부 상수이므로 f-string 사용 안전
+        splits = [
+            ("ops_vs_lhp", "bs.opponent_pitcher_hand = '좌투'"),
+            ("ops_vs_rhp", "bs.opponent_pitcher_hand = '우투'"),
+            ("ops_home",   "bs.is_home = 1"),
+            ("ops_away",   "bs.is_home = 0"),
+        ]
+
+        season_str = str(season)
+        for col_name, where_clause in splits:
+            rows = conn.execute(f"""
+                SELECT
+                    bs.player_id,
+                    SUM(bs.hits)    as hits,
+                    SUM(bs.ab)      as ab,
+                    SUM(bs.bb)      as bb,
+                    SUM(bs.hbp)     as hbp,
+                    SUM(bs.sf)      as sf,
+                    SUM(bs.doubles) as doubles,
+                    SUM(bs.triples) as triples,
+                    SUM(bs.hr)      as hr
+                FROM batter_stats bs
+                JOIN games g ON bs.game_id = g.id
+                WHERE {where_clause}
+                  AND g.date >= ? || '-03-22'
+                  AND g.date <= ? || '-10-05'
+                  AND g.status = 'final'
+                GROUP BY bs.player_id
+            """, (season_str, season_str)).fetchall()
+
+            for row in rows:
+                hits    = row[1] or 0
+                ab      = row[2] or 0
+                bb      = row[3] or 0
+                hbp     = row[4] or 0
+                sf      = row[5] or 0
+                doubles = row[6] or 0
+                triples = row[7] or 0
+                hr      = row[8] or 0
+                singles = hits - doubles - triples - hr
+
+                obp_denom = ab + bb + hbp + sf
+                obp = (hits + bb + hbp) / obp_denom if obp_denom > 0 else 0.0
+                slg = (singles + 2 * doubles + 3 * triples + 4 * hr) / ab if ab > 0 else 0.0
+                ops = round(obp + slg, 3)
+
+                conn.execute(
+                    f"UPDATE batter_season SET {col_name} = ? WHERE player_id = ? AND season = ?",
+                    (ops, row[0], season),
+                )
+
+        conn.commit()
+        logger.info("타자 스플릿 계산 완료: %d시즌", season)
 
     # ─── 투수 시즌 집계 ────────────────────────────────
 
@@ -228,10 +295,10 @@ class SeasonAggregator:
                 ps.player_id,
                 ps.team_id,
                 COUNT(DISTINCT ps.game_id) as games,
-                SUM(CASE WHEN ps.decision = 'W' THEN 1 ELSE 0 END) as wins,
-                SUM(CASE WHEN ps.decision = 'L' THEN 1 ELSE 0 END) as losses,
-                SUM(CASE WHEN ps.decision = 'S' THEN 1 ELSE 0 END) as saves,
-                SUM(CASE WHEN ps.decision = 'H' THEN 1 ELSE 0 END) as holds,
+                SUM(CASE WHEN ps.decision = '승' THEN 1 ELSE 0 END) as wins,
+                SUM(CASE WHEN ps.decision = '패' THEN 1 ELSE 0 END) as losses,
+                SUM(CASE WHEN ps.decision = '세' THEN 1 ELSE 0 END) as saves,
+                SUM(CASE WHEN ps.decision = '홀드' THEN 1 ELSE 0 END) as holds,
                 SUM(ps.ip_outs) as ip_outs,
                 SUM(ps.hits_allowed) as hits_allowed,
                 SUM(ps.hr_allowed) as hr_allowed,
@@ -327,9 +394,54 @@ class SeasonAggregator:
             count += 1
 
         conn.commit()
+        self._calculate_pitcher_splits(conn, season)
         conn.close()
         logger.info("투수 시즌 집계 완료: %d시즌, %d명", season, count)
         return count
+
+    def _calculate_pitcher_splits(self, conn: sqlite3.Connection, season: int) -> None:
+        """투수 스플릿 ERA 계산 → pitcher_season UPDATE.
+
+        계산 가능한 스플릿:
+          - era_home: is_home = 1
+          - era_away: is_home = 0
+
+        계산 불가 (NULL 유지):
+          - era_vs_lhb / era_vs_rhb: pitcher_stats.batter_hand 미수집
+        """
+        splits = [
+            ("era_home", "ps.is_home = 1"),
+            ("era_away", "ps.is_home = 0"),
+        ]
+
+        season_str = str(season)
+        for col_name, where_clause in splits:
+            rows = conn.execute(f"""
+                SELECT
+                    ps.player_id,
+                    SUM(ps.er)      as er,
+                    SUM(ps.ip_outs) as ip_outs
+                FROM pitcher_stats ps
+                JOIN games g ON ps.game_id = g.id
+                WHERE {where_clause}
+                  AND g.date >= ? || '-03-22'
+                  AND g.date <= ? || '-10-05'
+                  AND g.status = 'final'
+                GROUP BY ps.player_id
+            """, (season_str, season_str)).fetchall()
+
+            for row in rows:
+                er      = row[1] or 0
+                ip_outs = row[2] or 0
+                era = round((er * 27) / ip_outs, 2) if ip_outs > 0 else 0.0
+
+                conn.execute(
+                    f"UPDATE pitcher_season SET {col_name} = ? WHERE player_id = ? AND season = ?",
+                    (era, row[0], season),
+                )
+
+        conn.commit()
+        logger.info("투수 스플릿 계산 완료: %d시즌", season)
 
 
 if __name__ == "__main__":
