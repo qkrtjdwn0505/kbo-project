@@ -1,13 +1,12 @@
 """팀/순위 API — 순위표, 팀스탯 비교, 선수 TOP N"""
 
-import datetime
 from typing import Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import func, select, text
 from sqlalchemy.orm import Session
 
-from src.backend.database import get_db
+from src.backend.database import get_db, get_latest_season
 from src.backend.models import batter_season, games, pitcher_season, players, teams
 from src.backend.schemas.team import (
     StandingsResponse,
@@ -40,8 +39,6 @@ _SEASON_START = "-03-22"
 _SEASON_END = "-10-05"
 
 
-def _current_season() -> int:
-    return datetime.date.today().year
 
 
 # ── 팀 순위표 ────────────────────────────────────────────
@@ -52,7 +49,7 @@ def get_standings(
     db: Session = Depends(get_db),
 ):
     """팀 순위표"""
-    season = season or _current_season()
+    season = season or get_latest_season(db)
     date_from = f"{season}{_SEASON_START}"
     date_to = f"{season}{_SEASON_END}"
 
@@ -178,7 +175,7 @@ def get_team_comparison(
     db: Session = Depends(get_db),
 ):
     """팀스탯 종합 비교 카드 4개"""
-    season = season or _current_season()
+    season = season or get_latest_season(db)
     cards = []
 
     # 공격력: 타자 OPS 팀 평균 (PA >= 50 필터)
@@ -267,7 +264,7 @@ def get_top_rankings(
     db: Session = Depends(get_db),
 ):
     """주요 지표별 선수 TOP N"""
-    season = season or _current_season()
+    season = season or get_latest_season(db)
 
     is_pitcher = stat in _PITCHER_STATS
     is_batter = stat in _BATTER_STATS

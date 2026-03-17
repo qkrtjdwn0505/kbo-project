@@ -1,13 +1,12 @@
 """선수 API — 검색, 프로필, 기록 3탭, 선수 목록"""
 
-import datetime
 from typing import Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Path, Query
 from sqlalchemy import func, select, text
 from sqlalchemy.orm import Session
 
-from src.backend.database import get_db
+from src.backend.database import get_db, get_latest_season
 from src.backend.models import batter_season, pitcher_season, players, teams
 from src.backend.schemas.player import (
     BatterClassicStats,
@@ -50,8 +49,6 @@ def _ip_outs_to_display(ip_outs: int) -> str:
     return f"{ip_outs // 3}.{ip_outs % 3}"
 
 
-def _current_season() -> int:
-    return datetime.date.today().year
 
 
 def _get_player_or_404(db: Session, player_id: int) -> dict:
@@ -126,7 +123,7 @@ def list_players(
     if sort_order not in ("asc", "desc"):
         raise HTTPException(status_code=400, detail="sort_order는 asc 또는 desc")
 
-    season = season or _current_season()
+    season = season or get_latest_season(db)
     is_pitcher = position == "투수"
 
     if is_pitcher:
@@ -228,7 +225,7 @@ def get_player_classic(
 ):
     """클래식 스탯 탭"""
     p = _get_player_or_404(db, player_id)
-    season = season or _current_season()
+    season = season or get_latest_season(db)
     ptype = _player_type(p["position"])
 
     if ptype == "batter":
@@ -307,7 +304,7 @@ def get_player_sabermetrics(
 ):
     """세이버메트릭스 탭"""
     p = _get_player_or_404(db, player_id)
-    season = season or _current_season()
+    season = season or get_latest_season(db)
     ptype = _player_type(p["position"])
 
     if ptype == "batter":
@@ -368,7 +365,7 @@ def get_player_splits(
 ):
     """스플릿 탭"""
     p = _get_player_or_404(db, player_id)
-    season = season or _current_season()
+    season = season or get_latest_season(db)
     ptype = _player_type(p["position"])
 
     if ptype == "batter":

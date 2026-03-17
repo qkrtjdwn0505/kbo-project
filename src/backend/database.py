@@ -2,7 +2,7 @@
 
 import os
 from pathlib import Path
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker, Session
 from dotenv import load_dotenv
 
@@ -28,3 +28,16 @@ def get_db():
         yield db
     finally:
         db.close()
+
+
+def get_latest_season(db: Session) -> int:
+    """DB에 데이터가 있는 가장 최근 시즌 반환.
+
+    batter_season 테이블의 MAX(season)을 조회.
+    데이터가 없으면 현재 연도 반환.
+    """
+    result = db.execute(text("SELECT MAX(season) FROM batter_season")).scalar()
+    if result:
+        return result
+    import datetime
+    return datetime.date.today().year
