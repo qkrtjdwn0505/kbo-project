@@ -1,0 +1,121 @@
+/* 공용 스탯 그리드 — ClassicTab, SaberTab 공유 */
+
+.stat-grid-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stat-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.stat-row--ratio {
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+}
+
+.stat-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 8px 14px;
+  min-width: 60px;
+  flex: 1 1 60px;
+  max-width: 100px;
+}
+
+.stat-cell--large {
+  flex: 1 1 100px;
+  max-width: 160px;
+  padding: 12px 20px;
+  background: white;
+  border-color: var(--color-primary);
+}
+
+.stat-cell-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+.stat-cell--large .stat-cell-value {
+  font-size: 24px;
+  color: var(--color-primary);
+}
+
+.stat-cell-label {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 4px;
+  white-space: nowrap;
+}
+
+/* 툴팁 래퍼 */
+.stat-cell-with-tip {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 100px;
+  max-width: 160px;
+}
+
+.stat-cell-with-tip .stat-cell {
+  flex: unset;
+  width: 100%;
+  max-width: unset;
+  cursor: help;
+}
+
+.stat-cell-with-tip .tip-text {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a202c;
+  color: white;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  max-width: 220px;
+  white-space: normal;
+  text-align: center;
+  z-index: 10;
+  line-height: 1.4;
+  pointer-events: none;
+}
+
+.stat-cell-with-tip:hover .tip-text {
+  display: block;
+}
+
+/* 탭 시즌 배지 */
+.tab-season-badge {
+  display: inline-block;
+  background: var(--color-primary);
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
+
+/* 클래식/세이버 탭 공용 */
+.classic-tab,
+.saber-tab {
+  display: flex;
+  flex-direction: column;
+}

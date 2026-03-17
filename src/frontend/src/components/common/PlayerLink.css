@@ -1,0 +1,10 @@
+.player-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.player-link:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}

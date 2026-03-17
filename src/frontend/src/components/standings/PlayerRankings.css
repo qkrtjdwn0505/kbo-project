@@ -1,0 +1,89 @@
+.player-rankings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 700px) {
+  .player-rankings-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 450px) {
+  .player-rankings-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ranking-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ranking-card-title {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.ranking-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ranking-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.ranking-pos {
+  color: var(--color-text-secondary);
+  width: 18px;
+  flex-shrink: 0;
+  font-weight: 600;
+}
+
+.ranking-name {
+  flex: 1;
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.ranking-name:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.ranking-team {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  background: var(--color-bg);
+  padding: 1px 5px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.ranking-value {
+  font-weight: 700;
+  color: var(--color-primary);
+  min-width: 42px;
+  text-align: right;
+}
+
+.ranking-empty {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin: 0;
+}

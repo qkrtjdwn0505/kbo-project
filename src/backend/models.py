@@ -168,6 +168,10 @@ pitcher_season = Table(
     Column("bb_per_9", Float),
     Column("hr_per_9", Float),
     Column("k_bb_ratio", Float),
+    Column("era_vs_lhb", Float),
+    Column("era_vs_rhb", Float),
+    Column("era_home", Float),
+    Column("era_away", Float),
     Column("is_starter", Boolean),
 )
 

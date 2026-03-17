@@ -1,0 +1,108 @@
+.rank-table-wrapper {
+  overflow-x: auto;
+}
+
+.rank-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.rank-table th {
+  padding: 8px 10px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: var(--color-bg);
+  border-bottom: 2px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.rank-table th.col-team,
+.rank-table td.col-team {
+  text-align: left;
+}
+
+.rank-table td {
+  padding: 10px 10px;
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.rank-table tr:last-child td {
+  border-bottom: none;
+}
+
+.rank-table tr:hover td {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.row-first td {
+  background: rgba(26, 54, 93, 0.04);
+  font-weight: 600;
+}
+
+.col-rank {
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  width: 36px;
+}
+
+.col-team {
+  min-width: 60px;
+}
+
+.team-name {
+  font-weight: 600;
+}
+
+.col-num { width: 40px; }
+.col-pct { width: 52px; font-weight: 600; }
+.col-gb  { width: 56px; color: var(--color-text-secondary); }
+.col-recent { width: 90px; }
+.col-streak { width: 80px; }
+
+/* 최근 5경기 도트 */
+.recent5 {
+  display: inline-flex;
+  gap: 3px;
+  align-items: center;
+}
+
+.r5-dot {
+  font-size: 13px;
+  line-height: 1;
+}
+
+.r5-win  { color: #2f855a; }
+.r5-loss { color: #c53030; }
+.r5-draw { color: var(--color-text-secondary); }
+
+/* 흐름 */
+.streak {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+.streak-win  { color: #2f855a; }
+.streak-loss { color: #c53030; }
+
+/* 전체 보기 링크 */
+.view-all-row {
+  text-align: right;
+  padding: 10px 4px 0;
+}
+
+.view-all-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.view-all-link:hover {
+  text-decoration: underline;
+}

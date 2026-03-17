@@ -1,0 +1,91 @@
+.stat-table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.stat-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: var(--color-surface);
+}
+
+.stat-table th,
+.stat-table td {
+  padding: 10px 12px;
+  text-align: right;
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.stat-table th {
+  background: #f0f4f8;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.stat-table th.sortable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.stat-table th.sortable:hover {
+  background: #e2e8f0;
+  color: var(--color-text);
+}
+
+.stat-table th.sorted {
+  color: var(--color-primary);
+}
+
+.sort-icon {
+  font-size: 10px;
+}
+
+.stat-table .col-rank {
+  text-align: center;
+  width: 36px;
+  color: var(--color-text-secondary);
+  font-size: 12px;
+}
+
+.stat-table .col-player {
+  text-align: left;
+  font-weight: 500;
+}
+
+.stat-table .col-team {
+  text-align: left;
+  color: var(--color-text-secondary);
+  font-size: 13px;
+}
+
+.stat-table tbody tr:hover {
+  background: #f7fafc;
+}
+
+.player-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.player-btn:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.table-empty {
+  text-align: center;
+  color: var(--color-text-secondary);
+  padding: 32px;
+  font-size: 14px;
+}

@@ -1,0 +1,5612 @@
+[
+  {
+    "name": "박치국",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최주형",
+    "team_id": 4,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김정우",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박정수",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "타무라",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김민규",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "최승용",
+    "team_id": 4,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이병헌",
+    "team_id": 4,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "양재훈",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이주호",
+    "team_id": 4,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이교훈",
+    "team_id": 4,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "잭로그",
+    "team_id": 4,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "최종인",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "서준오",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최지강",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이주엽",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이용찬",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김명신",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "곽빈",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박신지",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이영하",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김유성",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김호준",
+    "team_id": 4,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박웅",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최준호",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최원준",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김택연",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "윤태호",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최민석",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "플렉센",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "제환유",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김한중",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최우인",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김지윤",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "장우진",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "황희천",
+    "team_id": 4,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "임종훈",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "정성헌",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "안치호",
+    "team_id": 4,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "안민겸",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이기석",
+    "team_id": 4,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김성재",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김기연",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "양의지",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박민준",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "윤준호",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "장규빈",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "류현준",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이희성",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "임종성",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박성재",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "오명진",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박찬호",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김민혁",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김동준",
+    "team_id": 4,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이유찬",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박계범",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "강승호",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박지훈",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박준순",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "양석환",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "안재석",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "신민철",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "지강혁",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이선우",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "한다현",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김준상",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "심건보",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "남태웅",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김민석",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "전다민",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "카메론",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "정수빈",
+    "team_id": 4,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김대한",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김인태",
+    "team_id": 4,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "홍성호",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "신우열",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "조수행",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "천현재",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김주오",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "양현진",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김문수",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "주양준",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "엄지민",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "임현철",
+    "team_id": 4,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "곽도규",
+    "team_id": 1,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "유지성",
+    "team_id": 1,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김태형",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "조상우",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "윤영철",
+    "team_id": 1,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김현수",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "윤중현",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이준영",
+    "team_id": 1,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김사윤",
+    "team_id": 1,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이형범",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "올러",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "장재혁",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최지민",
+    "team_id": 1,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "네일",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "황동하",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김건국",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이태양",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "정찬화",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김정엽",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이의리",
+    "team_id": 1,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김범수",
+    "team_id": 1,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "전상현",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "홍건희",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김기훈",
+    "team_id": 1,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "양현종",
+    "team_id": 1,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "한재승",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이성원",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김도현",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김시훈",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "정해영",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이호민",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김현수",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "성영탁",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이도현",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "홍민규",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김대유",
+    "team_id": 1,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "강이준",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "장민기",
+    "team_id": 1,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이승재",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "조건호",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김세일",
+    "team_id": 1,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김경묵",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김상범",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "오규석",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이호진",
+    "team_id": 1,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "정다훈",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최건희",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "나연우",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "지현",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김양수",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최유찬",
+    "team_id": 1,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "유승철",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "양타"
+  },
+  {
+    "name": "주효상",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "한준수",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김태군",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "권다결",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김선우",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이도훈",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "신명승",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박민",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김선빈",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김도영",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "정현창",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김규성",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "윤도현",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최정용",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "변우혁",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "데일",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "황대인",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이호연",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박상준",
+    "team_id": 1,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "오선우",
+    "team_id": 1,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "장시현",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "오정환",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김재현",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이준범",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "한준희",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "송호정",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "황석민",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "엄준현",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박종혁",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "차상현",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박정우",
+    "team_id": 1,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이창진",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "정해원",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박재현",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "카스트로",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김호령",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "한승연",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김석환",
+    "team_id": 1,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김민규",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "나성범",
+    "team_id": 1,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "고종욱",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김민수",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이영재",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박헌",
+    "team_id": 1,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "천정민",
+    "team_id": 1,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "곽동효",
+    "team_id": 1,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이호성",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "육선엽",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "매닝",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최지광",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "미야지",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이재희",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "원태인",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "양현",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최원태",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이승현",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김태훈",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이승민",
+    "team_id": 2,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "백정현",
+    "team_id": 2,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "최하늘",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "임기영",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이호범",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "양창섭",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김대호",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이재익",
+    "team_id": 2,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김무신",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "정민성",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "배찬승",
+    "team_id": 2,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이승현",
+    "team_id": 2,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "장찬희",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김재윤",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "홍원표",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김상호",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박용재",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "정재훈",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "후라도",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김시온",
+    "team_id": 2,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박주혁",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "허윤동",
+    "team_id": 2,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "최예한",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "권현우",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "홍준영",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김백산",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "천겸",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "진희성",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김유현",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "신윤호",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김성경",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김동현",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "우승완",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "홍승원",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이서준",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "한수동",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "황정현",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박주영",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "석예헌",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "신정환",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "어윤성",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김재성",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박진우",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이병헌",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김도환",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "장승현",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "강민호",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박세혁",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "차동영",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이서준",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "안민성",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "디아즈",
+    "team_id": 2,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이해승",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "심재훈",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이재현",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김재상",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "류지혁",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김영웅",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "차승준",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이창용",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "양우현",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "전병우",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박장민",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김상준",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "강민성",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "조민성",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "임주찬",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이한민",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "구자욱",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김재혁",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이성규",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김태훈",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "윤정빈",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김헌곤",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최형우",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김성윤",
+    "team_id": 2,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "함수호",
+    "team_id": 2,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "류승민",
+    "team_id": 2,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "홍현빈",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김지찬",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박승규",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "강준서",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김상민",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이진용",
+    "team_id": 2,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "조세익",
+    "team_id": 2,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김유영",
+    "team_id": 3,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "임찬규",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "함덕주",
+    "team_id": 3,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김대현",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "송승기",
+    "team_id": 3,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "최지명",
+    "team_id": 3,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "정우영",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "우강훈",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이우찬",
+    "team_id": 3,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "배재준",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이민호",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "장시환",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "손주영",
+    "team_id": 3,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "톨허스트",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이정용",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이지강",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "성동현",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김강률",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "조원태",
+    "team_id": 3,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박명근",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김진성",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김동현",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김진수",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "치리노스",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "조건희",
+    "team_id": 3,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "권우준",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "장현식",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "유영찬",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김주온",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박시원",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박준성",
+    "team_id": 3,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "백승현",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "양우진",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김영우",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "웰스",
+    "team_id": 3,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "우명현",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이상영",
+    "team_id": 3,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "진우영",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김종운",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이믿음",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "안시후",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "윤형민",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박성진",
+    "team_id": 3,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "성준서",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "하현규",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김지용",
+    "team_id": 3,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "임정균",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "원상훈",
+    "team_id": 3,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "양진혁",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "허준혁",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이종준",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박동원",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김준태",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김민수",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이주헌",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "강민기",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이한림",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박준기",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "전경원",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "문보경",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "신민재",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "구본혁",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이영빈",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "오지환",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김정율",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "손용준",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "오스틴",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "추세현",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김성진",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "천성호",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "문정빈",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "주정환",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "우정안",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이지백",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "강민균",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "곽민호",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이태훈",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "송대현",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최원영",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김주성",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "문성주",
+    "team_id": 3,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박해민",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "함창건",
+    "team_id": 3,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "홍창기",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이재원",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "송찬의",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "서영준",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박관우",
+    "team_id": 3,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김현종",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "엄태경",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박현우",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최명경",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "권동혁",
+    "team_id": 3,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이준서",
+    "team_id": 3,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "고영표",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "한차현",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "스기모토",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "우규민",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "임준형",
+    "team_id": 5,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "권성준",
+    "team_id": 5,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "최동환",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이채호",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "문용익",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "배제성",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김태오",
+    "team_id": 5,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이정현",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김민수",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "전용주",
+    "team_id": 5,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "소형준",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "사우어",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "한승혁",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "보쉴리",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이상동",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "주권",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "지명성",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김동현",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "손동현",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김재원",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박건우",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "오원석",
+    "team_id": 5,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이상우",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이현민",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "조이현",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박영현",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김정운",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "원상현",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이원재",
+    "team_id": 5,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박지훈",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "고준혁",
+    "team_id": 5,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "정정우",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "양타"
+  },
+  {
+    "name": "한지웅",
+    "team_id": 5,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이준명",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김건웅",
+    "team_id": 5,
+    "throw_hand": "좌투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "강건",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "장민호",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박준혁",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "윤상인",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "정현우",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이민준",
+    "team_id": 5,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김휘연",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김규한",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "권효준",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "장성우",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "조대현",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김민석",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "한승택",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "강현우",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이정환",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김유빈",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박치성",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "오윤석",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "강민성",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이강민",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김상수",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "류현인",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "허경민",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "문상철",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "오서진",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "힐리어드",
+    "team_id": 5,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "안인산",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "권동진",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "장준원",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "손민석",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "임상우",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이승현",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김건휘",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이용현",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박성준",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "최원준",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "안치영",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김현수",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "안현민",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "배정대",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최성민",
+    "team_id": 5,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이정훈",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "장진혁",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김민혁",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "신범준",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "유준규",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "최동희",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박민석",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이재원",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "정영웅",
+    "team_id": 5,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김경환",
+    "team_id": 5,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김민",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "한지헌",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이도우",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김준영",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이기순",
+    "team_id": 6,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박상후",
+    "team_id": 6,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김현재",
+    "team_id": 6,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김성민",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "윤태현",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이건욱",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "조병현",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "장지훈",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "서진용",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "타케다",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "전영준",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김광현",
+    "team_id": 6,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "최민준",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "한두솔",
+    "team_id": 6,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "노경은",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김건우",
+    "team_id": 6,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김민준",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "베니지아노",
+    "team_id": 6,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "문승원",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김택형",
+    "team_id": 6,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박종훈",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "정동윤",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "화이트",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박시후",
+    "team_id": 6,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "백승건",
+    "team_id": 6,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "신지환",
+    "team_id": 6,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김도현",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최수호",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박기호",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최용준",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "천범석",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "송영진",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "양타"
+  },
+  {
+    "name": "이로운",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "조요한",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "윤성보",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "변건우",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "류현곤",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "조재우",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "신상연",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김태현",
+    "team_id": 6,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김재훈",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이준기",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이주형",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김준모",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이율예",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "조형우",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김민식",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "신범수",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김규민",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이지영",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김민범",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박성한",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "정준재",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "장현진",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김수윤",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김성현",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박명현",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "현원회",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "안상현",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최정",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "고명준",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김태윤",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김요셉",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김민준",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "석정우",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "문상준",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최윤석",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "홍대인",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "안재연",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김정민",
+    "team_id": 6,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "최준우",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이승민",
+    "team_id": 6,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "하재훈",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "채현우",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "에레디아",
+    "team_id": 6,
+    "throw_hand": "좌투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김성욱",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김재환",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이정범",
+    "team_id": 6,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "한유섬",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "오태곤",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "류효승",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "장재율",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최지훈",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박정빈",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "임근우",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김창평",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박지환",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이원준",
+    "team_id": 6,
+    "throw_hand": "좌투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박세직",
+    "team_id": 6,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이승빈",
+    "team_id": 6,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "오시후",
+    "team_id": 6,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "한현희",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김진욱",
+    "team_id": 7,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "현도훈",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "정성종",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김강현",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박세웅",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "구승민",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "비슬리",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김상수",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "로드리게스",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김원중",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김영준",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박정민",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이민석",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "홍민기",
+    "team_id": 7,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이영재",
+    "team_id": 7,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박세진",
+    "team_id": 7,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "나균안",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박진",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이진하",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "쿄야마",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최이준",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이준서",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "윤성빈",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최준용",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "정현수",
+    "team_id": 7,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박준우",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "송재영",
+    "team_id": 7,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "최충연",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박시영",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "정철원",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "신동건",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이승헌",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "정우준",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "조영우",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이병준",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김주완",
+    "team_id": 7,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김태균",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "정선우",
+    "team_id": 7,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박로건",
+    "team_id": 7,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "하혜성",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이태연",
+    "team_id": 7,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김기준",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "조경민",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김태현",
+    "team_id": 7,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "장세진",
+    "team_id": 7,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김창훈",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "석상호",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박세현",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김화중",
+    "team_id": 7,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "남해담",
+    "team_id": 7,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김한결",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김현수",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박재엽",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "유강남",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "손성빈",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "정문혁",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "정보근",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김현도",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "강승구",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박건우",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이건희",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "하준서",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "서하은",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "고승민",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김세민",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "한태양",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "전민재",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최항",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김민성",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "한동희",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이호준",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "나승엽",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "노진혁",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박승욱",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박찬형",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이서준",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이태경",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박지훈",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김호범",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이정민",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이지훈",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김동규",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "홍서연",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "배인혁",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이로화",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "황성빈",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "신윤후",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "장두성",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "전준우",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "조세진",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "레이예스",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "양타"
+  },
+  {
+    "name": "손호영",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김동혁",
+    "team_id": 7,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김동현",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "윤동희",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김한홀",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김대현",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이인한",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "엄장윤",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "윤수녕",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박건",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "조민영",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "한승현",
+    "team_id": 7,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "문동주",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "여현승",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "황희성",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박준영",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "엄상백",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "에르난데스",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김승일",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이상규",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "왕옌청",
+    "team_id": 8,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "화이트",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이민우",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "장유호",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "황준서",
+    "team_id": 8,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "정이황",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김종수",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박재규",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김범준",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김서현",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "배민서",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김도빈",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "양수호",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "원종혁",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "윤산흠",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김민우",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "강재민",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "조동욱",
+    "team_id": 8,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박상원",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "정우주",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "권민규",
+    "team_id": 8,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "주현상",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "한서구",
+    "team_id": 8,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "강건우",
+    "team_id": 8,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박준영",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "하동준",
+    "team_id": 8,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "류현진",
+    "team_id": 8,
+    "throw_hand": "좌투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이기창",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "양선률",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "양경모",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이동영",
+    "team_id": 8,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "엄요셉",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박부성",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김관우",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김겸재",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최재훈",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이재원",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "허관회",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "장규현",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박상언",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "허인서",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "정우성",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "정민규",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최원준",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김준수",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이도윤",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "한경빈",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "심우준",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "노시환",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "하주석",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "채은성",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "한지윤",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "강백호",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김건",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이승현",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박정현",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최유빈",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "권현규",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "황영묵",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "배승수",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이지성",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "노석진",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이재환",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박주진",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이도훈",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "임종찬",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이진영",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "권광민",
+    "team_id": 8,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김태연",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "페라자",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "양타"
+  },
+  {
+    "name": "손아섭",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "유로결",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이원석",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최인호",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "문현빈",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "오재원",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "유민",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이민재",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김동휘",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "최윤호",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김해찬",
+    "team_id": 8,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김녹원",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "라일리",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "정구범",
+    "team_id": 9,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "토다",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김영규",
+    "team_id": 9,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "신민혁",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "임지민",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "목지훈",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김재열",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최성영",
+    "team_id": 9,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "하준영",
+    "team_id": 9,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "임정호",
+    "team_id": 9,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이준혁",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "류진욱",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "신영우",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "손주환",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "조민석",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이재학",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김진호",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박지한",
+    "team_id": 9,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "전사민",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "구창모",
+    "team_id": 9,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김태경",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "배재환",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "원종해",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최우석",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "테일러",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최요한",
+    "team_id": 9,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이세민",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김태훈",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "강태경",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "소이현",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "전루건",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김준원",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "홍재문",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김태현",
+    "team_id": 9,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "노재원",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박동수",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "양타"
+  },
+  {
+    "name": "김태우",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최윤혁",
+    "team_id": 9,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "정주영",
+    "team_id": 9,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김요엘",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "정튼튼",
+    "team_id": 9,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "윤성환",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "윤서현",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "손민서",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "안중열",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김형준",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이희성",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김정호",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "신민우",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박성재",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김동현",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박민우",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "허윤",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "서호철",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "오태양",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김주원",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "양타"
+  },
+  {
+    "name": "신재인",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "홍종표",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김한별",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "최정원",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "도태훈",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "데이비슨",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "윤준혁",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "오영수",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "한재환",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김휘집",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김건",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박인우",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박주찬",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "신성호",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이한",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "유재현",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김명규",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "천재환",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "한석현",
+    "team_id": 9,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "권희동",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박건우",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "고준휘",
+    "team_id": 9,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박시원",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이우성",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "고승완",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "오장한",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "배상호",
+    "team_id": 9,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김범준",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박영빈",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "양가온솔",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "장창훈",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "조창연",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "조효원",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "안지원",
+    "team_id": 9,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박주성",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김성민",
+    "team_id": 10,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이강준",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "정현우",
+    "team_id": 10,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박준현",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김윤하",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "조영건",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김성진",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김재웅",
+    "team_id": 10,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "오석주",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "와일스",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박윤성",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박지성",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박진형",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "안우진",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이준우",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "정다훈",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "원종현",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이승호",
+    "team_id": 10,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "유토",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김선기",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "하영민",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "알칸타라",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "양지율",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김서준",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "배동현",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "전준표",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "손현기",
+    "team_id": 10,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "정세영",
+    "team_id": 10,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이태양",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김인범",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김연주",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "임진묵",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "백진수",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박정훈",
+    "team_id": 10,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "윤석원",
+    "team_id": 10,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "윤현",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김동규",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "손힘찬",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "오혜성",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "정동준",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이태준",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "한민우",
+    "team_id": 10,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "최현우",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김태언",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박준건",
+    "team_id": 10,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김유빈",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "이승재",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김준형",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김건희",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김재현",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김동헌",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박성빈",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박준형",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김리안",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김지성",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김주영",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김태진",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박한결",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이재상",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "오선진",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "안치홍",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김웅빈",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "서건창",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "김병휘",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "김지석",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "최재영",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "염승원",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "최주환",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이주형",
+    "team_id": 10,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "양현종",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "송지후",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "어준서",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "여동욱",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "전태현",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "권혁빈",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "서유신",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "유정택",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이주형",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이용규",
+    "team_id": 10,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "임병욱",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "브룩스",
+    "team_id": 10,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "주성원",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "추재현",
+    "team_id": 10,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "임지열",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "원성준",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "이형종",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박찬혁",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박주홍",
+    "team_id": 10,
+    "throw_hand": "좌투",
+    "bat_hand": "좌타"
+  },
+  {
+    "name": "박수종",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "박채울",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  },
+  {
+    "name": "심휘윤",
+    "team_id": 10,
+    "throw_hand": "우투",
+    "bat_hand": "우타"
+  }
+]

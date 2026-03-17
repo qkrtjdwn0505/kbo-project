@@ -5,11 +5,17 @@ from sqlalchemy.orm import Session
 from typing import Optional
 
 from src.backend.database import get_db
+from src.backend.explorer.query_builder import build_explorer_query
+from src.backend.schemas.explorer import ExplorerResponse
 
 router = APIRouter()
 
+VALID_TARGETS = {"batter", "pitcher", "pitcher_starter", "pitcher_bullpen", "team"}
+VALID_SORTS = {"desc", "asc"}
+VALID_LIMITS = {"5", "10", "20", "all"}
 
-@router.get("/explorer")
+
+@router.get("/explorer", response_model=ExplorerResponse)
 def explore_data(
     target: str = Query(..., description="대상: batter, pitcher, pitcher_starter, pitcher_bullpen, team"),
     condition: str = Query("all", description="조건: all, vs_lhb, vs_rhb, risp, home, away, night 등"),
@@ -18,22 +24,27 @@ def explore_data(
     limit: str = Query("5", description="범위: 5, 10, 20, all"),
     season: Optional[int] = Query(None, description="시즌 (기본: 현재)"),
     db: Session = Depends(get_db),
-):
+) -> ExplorerResponse:
     """복합 조건 질의 실행 — 드롭다운 5단 조합"""
-    # TODO: T-2.2에서 동적 SQL 빌더 구현
-    # TODO: T-2.3에서 응답 포맷 구현
-    return {
-        "query": {
-            "target": target,
-            "condition": condition,
-            "stat": stat,
-            "sort": sort,
-            "limit": limit,
-        },
-        "results": [],
-        "total_count": 0,
-        "message": "T-2.2, T-2.3에서 구현 예정",
-    }
+    if target not in VALID_TARGETS:
+        raise HTTPException(status_code=400, detail=f"잘못된 대상: {target}")
+    if sort not in VALID_SORTS:
+        raise HTTPException(status_code=400, detail=f"잘못된 정렬: {sort}")
+    if limit not in VALID_LIMITS:
+        raise HTTPException(status_code=400, detail=f"잘못된 범위: {limit}")
+
+    try:
+        return build_explorer_query(
+            db=db,
+            target=target,
+            condition=condition,
+            stat=stat,
+            sort=sort,
+            limit=limit,
+            season=season,
+        )
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
 
 @router.get("/explorer/options")

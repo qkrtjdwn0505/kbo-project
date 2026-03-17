@@ -1,0 +1,11 @@
+.standings-page h1 {
+  font-size: 1.75rem;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 16px;
+  color: var(--color-text);
+}

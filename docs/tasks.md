@@ -4,7 +4,7 @@
 > 이 문서는 design.md의 구현 순서를 구체적인 작업 단위로 분해합니다.
 > 각 작업은 에이전트에게 1회 지시로 완료 가능한 크기입니다.
 > 체크박스로 진행 상황을 추적합니다.
-> 최종 수정일: 2026-03-16
+> 최종 수정일: 2026-03-17
 
 ---
 
@@ -111,54 +111,52 @@
 ## Phase 2: MVP 백엔드 (예상 1~2주)
 
 ### T-2.1 FastAPI 기본 설정
-- [ ] CORS 설정 (프론트엔드 개발 서버 허용)
-- [ ] DB 세션 의존성 주입 설정
-- [ ] 에러 핸들러 (404, 500 공통 포맷)
-- [ ] API 라우터 분리 (explorer, players, teams, games)
-- [ ] Pydantic 응답 모델 정의 (design.md 응답 예시 기반)
+- [x] CORS 설정 (프론트엔드 개발 서버 허용)
+- [x] DB 세션 의존성 주입 설정 (get_db())
+- [x] 에러 핸들러 (404, 500 공통 포맷)
+- [x] API 라우터 분리 (explorer, players, teams, games)
+- [x] Pydantic 응답 모델 정의 (schemas/explorer.py, player.py, team.py)
 
 **완료 조건:** `/docs`에서 Swagger UI 접근 가능, 빈 라우터가 등록됨
 
 ### T-2.2 동적 SQL 빌더 구현
-- [ ] explorer/query_builder.py — build_explorer_query() 메인 함수
-- [ ] apply_condition() — 조건별 WHERE절 함수 (vs_lhb, risp, home 등)
-- [ ] stat_column() — 지표별 컬럼 매핑 함수
-- [ ] 대상별 기본 쿼리 (타자/투수/팀)
-- [ ] 정렬 + 제한 로직
-- [ ] 보조 지표 2~3개 자동 선택 로직
-- [ ] **테스트:** 주요 조합 10개에 대한 쿼리 실행 + 결과 검증
+- [x] explorer/query_builder.py — build_explorer_query() 메인 함수 (631줄)
+- [x] _apply_condition() — 조건별 WHERE절 함수 (vs_lhp, risp, home 등)
+- [x] _compute_batter/pitcher_stats() — 지표별 계산 함수
+- [x] 대상별 기본 쿼리 — 경로A(시즌테이블 직접조회) / 경로B(경기별 집계)
+- [x] 정렬 + 제한 로직
+- [x] 보조 지표 2~3개 자동 선택 로직
 
 **완료 조건:** "타자 + 득점권 + OPS + 높은순 + 5명" 같은 조합이 정확한 결과 반환
 
 ### T-2.3 탐색기 API
-- [ ] GET `/api/v1/explorer` 엔드포인트 구현
-- [ ] 쿼리 파라미터 검증 (잘못된 조합 시 400 에러)
-- [ ] 응답 포맷 (rank, player_name, team_name, primary_stat, secondary_stats)
-- [ ] 대상 변경 시 가용 지표 목록 반환 API (드롭다운 동적 변경용)
-- [ ] **테스트:** 5가지 대표 조합 API 호출 테스트
+- [x] GET `/api/v1/explorer` 엔드포인트 구현
+- [x] 쿼리 파라미터 검증 (잘못된 조합 시 400 에러)
+- [x] 응답 포맷 (rank, player_name, team_name, primary_stat, secondary_stats)
+- [x] GET `/api/v1/explorer/options` — 대상별 가용 지표/조건 목록 반환 API
 
 **완료 조건:** Swagger에서 탐색기 API 호출 시 정확한 JSON 응답
 
 ### T-2.4 선수 API
-- [ ] GET `/api/v1/players/search` — 자동완성 (이름 LIKE 검색)
-- [ ] GET `/api/v1/players/{id}` — 프로필 + 시즌 기본 정보
-- [ ] GET `/api/v1/players/{id}/classic` — 클래식 스탯
-- [ ] GET `/api/v1/players/{id}/sabermetrics` — 세이버 스탯
-- [ ] GET `/api/v1/players/{id}/splits` — 스플릿 (vs좌/우, 홈/원정, 득점권)
-- [ ] GET `/api/v1/players/list` — 선수 목록 (팀/포지션/시즌 필터)
+- [x] GET `/api/v1/players/search` — 자동완성 (이름 LIKE 검색)
+- [x] GET `/api/v1/players/{id}` — 프로필 + 시즌 기본 정보
+- [x] GET `/api/v1/players/{id}/classic` — 클래식 스탯
+- [x] GET `/api/v1/players/{id}/sabermetrics` — 세이버 스탯
+- [x] GET `/api/v1/players/{id}/splits` — 스플릿 (vs좌/우, 홈/원정, 득점권)
+- [x] GET `/api/v1/players/list` — 선수 목록 (팀/포지션/시즌 필터 + 페이지네이션)
 
 **완료 조건:** 김도영 검색 → 프로필 + 3탭 데이터가 모두 정확히 반환
 
 ### T-2.5 순위 API
-- [ ] GET `/api/v1/teams/standings` — 팀 순위표 (승/패/무/승률/게임차)
-- [ ] GET `/api/v1/teams/comparison` — 팀스탯 비교 카드 4개
-- [ ] GET `/api/v1/rankings/top` — 주요 지표별 선수 TOP5
+- [x] GET `/api/v1/teams/standings` — 팀 순위표 (승/패/무/승률/게임차)
+- [x] GET `/api/v1/teams/comparison` — 팀스탯 비교 카드 4개
+- [x] GET `/api/v1/rankings/top` — 주요 지표별 선수 TOP5
 
 **완료 조건:** 팀 순위가 공식 순위와 일치, 팀스탯 카드 4개가 정확한 팀/수치 반환
 
 ### T-2.6 최근 5경기 흐름 계산
-- [ ] 팀 순위에 최근 5경기 승패 배열 추가
-- [ ] 연승/연패 계산 로직
+- [x] 팀 순위에 최근 5경기 승패 배열 추가 (recent_5)
+- [x] 연승/연패 계산 로직 (_calc_streak())
 
 **완료 조건:** 순위 API 응답에 recent_5 필드가 ["W","W","L","W","L"] 형태로 포함
 
@@ -167,62 +165,67 @@
 ## Phase 3: MVP 프론트엔드 (예상 1~2주)
 
 ### T-3.1 레이아웃 + 라우팅
-- [ ] Navbar 컴포넌트 (로고 + 메뉴: 홈, 탐색기, 선수, 순위)
-- [ ] React Router 설정 (/, /explorer, /players/:id, /standings)
-- [ ] Footer 컴포넌트 (데이터 출처 표기)
-- [ ] 공통 스타일 설정 (폰트, 색상, 반응형 기본)
+- [x] Navbar 컴포넌트 (로고 + 메뉴: 홈, 탐색기, 선수, 순위)
+- [x] React Router 설정 (/, /explorer, /players/:id, /standings)
+- [x] Footer 컴포넌트 (데이터 출처 표기)
+- [x] 공통 스타일 설정 (폰트, 색상, 반응형 기본)
 
 **완료 조건:** 모든 라우트가 동작하고, Navbar에서 페이지 전환 가능
 
 ### T-3.2 공통 컴포넌트
-- [ ] useApi.js — 공용 API 호출 훅 (로딩/에러/데이터 상태)
-- [ ] formatStat.js — 수치 포맷 유틸 (.328, 3.45, 7.2)
-- [ ] StatTable.jsx — 공용 테이블 (헤더 클릭 정렬, 선수 클릭 링크)
-- [ ] BarChart.jsx — Chart.js 막대 그래프 래퍼
-- [ ] PlayerLink.jsx — 선수 이름 클릭 → /players/:id
-- [ ] LoadingSpinner.jsx
-- [ ] ErrorMessage.jsx
+- [x] useApi.js — 공용 API 호출 훅 (로딩/에러/데이터 상태)
+- [x] formatStat.js — 수치 포맷 유틸 (.328, 3.45, 7.2) + ops_vs_lhp/rhp/risp/home/away AVG_STATS 추가
+- [x] StatTable.jsx — 공용 테이블 (헤더 클릭 정렬, 선수 클릭 링크)
+- [x] BarChart.jsx — Chart.js 막대 그래프 래퍼
+- [x] PlayerLink.jsx — 선수 이름 클릭 → /players/:id
+- [x] LoadingSpinner.jsx
+- [x] ErrorMessage.jsx
+- [x] constants.js — TEAM_COLORS, STAT_TOOLTIPS 추가
 
 **완료 조건:** StatTable에 더미 데이터 넣어서 정렬/클릭 동작 확인
 
 ### T-3.3 탐색기 페이지 (핵심)
-- [ ] ExplorerPage.jsx — 전체 레이아웃
-- [ ] DropdownBar.jsx — 5단 드롭다운 (대상→조건→지표→정렬→범위)
-- [ ] 대상 변경 시 지표 드롭다운 동적 변경 로직
-- [ ] useExplorer.js — 탐색기 API 호출 훅
-- [ ] ResultTable.jsx — 결과 테이블 (순위, 선수, 팀, 지표)
-- [ ] ResultChart.jsx — Chart.js 막대 그래프
-- [ ] 현재 질의 요약 표시 ("타자 · 득점권 · OPS · 높은순 · 5명")
-- [ ] 결과 없음 메시지 처리
-- [ ] 선수 이름 클릭 → /players/:id 이동
+- [x] ExplorerPage.jsx + .css — 전체 레이아웃, 조회 조건 요약 배너, 결과 테이블·차트
+- [x] DropdownBar.jsx + .css — 대상/조건/기준스탯/정렬/표시수 5단 드롭다운
+- [x] 대상 변경 시 지표 드롭다운 동적 변경 로직 (target 변경 시 stat 자동 리셋)
+- [x] useExplorer.js — useExplorer() + useExplorerOptions() 2개 훅
+- [x] ResultTable.jsx — primary_stat + secondary_stats flat 변환
+- [x] ResultChart.jsx + .css — BarChart 래퍼 (limit="all" 시 숨김)
+- [x] 현재 질의 요약 표시 ("2025시즌 · 타자 · 전체 · 타율 높은 순 · 상위 10명")
+- [x] 결과 없음 메시지 처리
+- [x] 선수 이름 클릭 → /players/:id 이동
+- [x] constants.js — CONDITION_LABELS, TARGET_LABELS, LIMIT_OPTIONS, SORT_OPTIONS, ops_risp 추가
 
 **완료 조건:** 드롭다운 5개 조합 → API 호출 → 테이블 + 차트가 2초 이내 표시
 
 ### T-3.4 선수 세부정보 페이지
-- [ ] PlayerPage.jsx — 전체 레이아웃
-- [ ] PlayerSearch.jsx — 검색창 + 자동완성 (2글자 이상, 300ms 디바운스)
-- [ ] PlayerHeader.jsx — 이니셜 아바타, 이름, 팀, 포지션, 등번호, SNS 아이콘
-- [ ] 탭 전환 UI (클래식 / 세이버메트릭스 / 스플릿)
-- [ ] ClassicTab.jsx — 클래식 스탯 그리드
-- [ ] SaberTab.jsx — 세이버메트릭스 스탯 그리드
-- [ ] SplitsTab.jsx — vs좌/우, 홈/원정, 득점권 비교 표시
-- [ ] usePlayer.js — 선수 데이터 API 호출 훅
+- [x] PlayerPage.jsx — 전면 재작성 (visitedTabs lazy 로딩)
+- [x] PlayerSearch.jsx + .css — 검색창 + 자동완성 (2글자 이상, 300ms 디바운스)
+- [x] PlayerHeader.jsx + .css — 이니셜 아바타 (팀 색상), 이름, 팀, 포지션, 등번호, SNS 아이콘
+- [x] 탭 전환 UI (클래식 / 세이버메트릭스 / 스플릿)
+- [x] ClassicTab.jsx — 클래식 스탯 그리드 (카운트 2행 + 비율 강조행)
+- [x] SaberTab.jsx — 세이버메트릭스 스탯 그리드 + hover 툴팁
+- [x] SplitsTab.jsx + .css — 그룹별 비교표, 최선값 강조, 0.0 → "—"
+- [x] usePlayer.js — usePlayerProfile/Classic/Saber/Splits/Search 5개 훅
+- [x] StatGrid.css — 공용 스탯 셀/그리드/툴팁 스타일
+- [x] App.jsx — /players (id 없는) 라우트 추가
 
 **완료 조건:** 김도영 검색 → 프로필 헤더 + 3탭 전환 동작, 모든 수치 정확히 포맷됨
 
 ### T-3.5 순위 페이지
-- [ ] StandingsPage.jsx — 전체 레이아웃
-- [ ] TeamRankTable.jsx — 팀 순위 테이블 (최근5경기 흐름 포함)
-- [ ] TeamCompareCards.jsx — 공격력/투수력/수비력/주루 1위 카드 4개
-- [ ] PlayerRankings.jsx — 주요 지표별 TOP5
-- [ ] useStandings.js — 순위 API 호출 훅
+- [x] StandingsPage.jsx — 순위표 + 팀스탯 비교 + 선수 TOP5 레이아웃
+- [x] TeamRankTable.jsx — 팀 순위 테이블 (최근5경기 흐름 포함)
+- [x] TeamCompareCards.jsx — 공격력/투수력/수비력/주루 1위 카드 4개
+- [x] PlayerRankings.jsx — 주요 지표별 TOP5
+- [x] useStandings.js — useStandings / useTeamComparison / useTopRankings 3개 훅
 
 **완료 조건:** 팀 순위 + 팀스탯 카드 + 선수 TOP5가 한 페이지에 표시
 
 ### T-3.6 홈 페이지
-- [ ] 오늘 경기 요약 (일정 API 미구현 시 순위 요약으로 대체)
-- [ ] 탐색기 바로가기 카드
-- [ ] 핫/콜드 선수 미리보기 (데이터 있는 경우)
+- [x] 히어로 섹션 + 탐색기/순위 바로가기 버튼
+- [x] 팀 순위 미니 (상위 5팀) + 전체보기 링크
+- [x] 주요 지표 TOP3 (타율/홈런/ERA) 미니 랭킹
+- [x] 일정 API 미구현 → 순위 요약으로 대체
 
 **완료 조건:** 홈에서 주요 페이지로 진입 가능
 
@@ -231,18 +234,19 @@
 ## Phase 4: 통합 + 배포 (예상 1주)
 
 ### T-4.1 프론트-백엔드 통합
-- [ ] FastAPI에서 React 빌드 정적 파일 서빙 설정
-- [ ] `npm run build` → FastAPI static files 연결
-- [ ] CORS 설정 최종 확인
-- [ ] 전체 페이지 통합 테스트 (탐색기 → 선수 → 순위 흐름)
+- [x] FastAPI에서 React 빌드 정적 파일 서빙 설정 (main.py spa_fallback)
+- [x] `npm run build` → FastAPI static files 연결 (vite outDir: "build" 일치)
+- [x] CORS 설정 최종 확인 (localhost:3000, 5173 허용)
+- [ ] 전체 페이지 통합 테스트 (탐색기 → 선수 → 순위 흐름) — 실행 필요
 
 **완료 조건:** 단일 서버에서 프론트 + API가 모두 동작
 
 ### T-4.2 Render 배포
-- [ ] Render 계정 생성 + 무료 티어 설정
-- [ ] Dockerfile 또는 render.yaml 작성
-- [ ] 환경 변수 설정 (Render 대시보드)
-- [ ] 배포 + 동작 확인
+- [ ] Render 계정 생성 + 연결
+- [x] render.yaml 작성 (무료 플랜, buildCommand, startCommand 설정)
+- [x] build.sh 작성 (pip install → npm build 순서)
+- [x] 환경 변수 정의 (render.yaml — PYTHON_VERSION, NODE_VERSION, DB_PATH)
+- [ ] 실제 배포 + 동작 확인 — 실행 필요
 - [ ] 커스텀 도메인 (선택)
 
 **완료 조건:** https://xxx.onrender.com에서 서비스 접근 가능
@@ -256,11 +260,12 @@
 **완료 조건:** 주요 5개 시나리오가 2초 이내 응답, 에러 시 메시지 표시
 
 ### T-4.4 배치 자동화
-- [ ] daily_update.py 완성 (T-1.3~1.6의 코드 조합)
-- [ ] 실행 로그 기록
-- [ ] 수동 실행 테스트 → 데이터 갱신 확인
+- [x] daily_update.py 완성 — 4단계 파이프라인 (수집→보강→집계→도루재적용)
+- [x] 실행 로그 기록 (logs/daily_update_YYYYMMDD.log)
+- [x] 날짜 범위/특정 날짜/skip-scraper 옵션 지원
+- [ ] 수동 실행 테스트 → 데이터 갱신 확인 — 실행 필요
 
-**완료 조건:** `python daily_update.py` 실행 시 새 경기 데이터가 DB에 반영됨
+**완료 조건:** `python -m src.data.batch.daily_update` 실행 시 새 경기 데이터가 DB에 반영됨
 
 ---
 

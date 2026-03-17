@@ -1,0 +1,59 @@
+.explorer-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.explorer-header {
+  margin-bottom: 16px;
+}
+
+.explorer-header h1 {
+  font-size: 1.75rem;
+  margin-bottom: 6px;
+}
+
+.query-summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--color-primary);
+  color: white;
+  border-radius: var(--radius);
+  font-size: 14px;
+}
+
+.query-summary-label {
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.8;
+  white-space: nowrap;
+}
+
+.query-summary-text {
+  font-weight: 500;
+}
+
+.explorer-loading {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.explorer-result-meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.result-count {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.mt-4 {
+  margin-top: 16px;
+}

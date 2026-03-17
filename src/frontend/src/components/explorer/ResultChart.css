@@ -1,0 +1,6 @@
+.result-chart-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--color-text);
+}

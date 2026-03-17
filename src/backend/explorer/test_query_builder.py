@@ -7,6 +7,7 @@ from sqlalchemy import create_engine
 from src.backend.explorer.query_builder import build_explorer_query
 
 DB_PATH = Path(__file__).parent.parent.parent.parent / "kbo.db"
+SEASON = 2025  # 테스트 대상 시즌
 
 
 @pytest.fixture(scope="module")
@@ -22,7 +23,7 @@ class TestBatterAll:
 
     def test_avg_desc_5(self, conn):
         """1. 타자 + all + avg + desc + 5"""
-        resp = build_explorer_query(conn, "batter", "all", "avg", "desc", "5")
+        resp = build_explorer_query(conn, "batter", "all", "avg", "desc", "5", season=SEASON)
         assert len(resp.results) == 5
         assert resp.results[0].primary_stat >= resp.results[1].primary_stat
         assert resp.total_count == 5
@@ -33,24 +34,24 @@ class TestBatterAll:
 
     def test_hr_desc_10(self, conn):
         """2. 타자 + all + hr + desc + 10"""
-        resp = build_explorer_query(conn, "batter", "all", "hr", "desc", "10")
+        resp = build_explorer_query(conn, "batter", "all", "hr", "desc", "10", season=SEASON)
         assert len(resp.results) == 10
         assert resp.results[0].primary_stat >= resp.results[1].primary_stat
 
     def test_ops_desc_all(self, conn):
         """타자 + all + ops + desc + all → 결과 > 0"""
-        resp = build_explorer_query(conn, "batter", "all", "ops", "desc", "all")
+        resp = build_explorer_query(conn, "batter", "all", "ops", "desc", "all", season=SEASON)
         assert len(resp.results) > 0
 
     def test_woba_has_secondary(self, conn):
         """wOBA 조회 시 보조 지표에 wrc_plus 포함"""
-        resp = build_explorer_query(conn, "batter", "all", "woba", "desc", "5")
+        resp = build_explorer_query(conn, "batter", "all", "woba", "desc", "5", season=SEASON)
         assert len(resp.results) == 5
         assert "wrc_plus" in resp.results[0].secondary_stats
 
     def test_war_desc_5(self, conn):
         """WAR 상위 5명"""
-        resp = build_explorer_query(conn, "batter", "all", "war", "desc", "5")
+        resp = build_explorer_query(conn, "batter", "all", "war", "desc", "5", season=SEASON)
         assert len(resp.results) == 5
         assert resp.results[0].primary_stat >= resp.results[4].primary_stat
 
@@ -60,7 +61,7 @@ class TestBatterCondition:
 
     def test_home_ops_desc_5(self, conn):
         """5. 타자 + home + ops + desc + 5"""
-        resp = build_explorer_query(conn, "batter", "home", "ops", "desc", "5")
+        resp = build_explorer_query(conn, "batter", "home", "ops", "desc", "5", season=SEASON)
         assert len(resp.results) == 5
         assert resp.results[0].primary_stat >= resp.results[1].primary_stat
         for r in resp.results:
@@ -68,19 +69,37 @@ class TestBatterCondition:
 
     def test_away_avg_desc_5(self, conn):
         """타자 + away + avg + desc + 5"""
-        resp = build_explorer_query(conn, "batter", "away", "avg", "desc", "5")
+        resp = build_explorer_query(conn, "batter", "away", "avg", "desc", "5", season=SEASON)
         assert len(resp.results) == 5
 
-    def test_home_woba_computed(self, conn):
-        """경로 B에서 wOBA 세이버 지표도 정상 계산"""
-        resp = build_explorer_query(conn, "batter", "home", "woba", "desc", "5")
+    def test_risp_ops_desc_5(self, conn):
+        """6. 타자 + risp + ops + desc + 5 → 득점권 OPS 상위 5명
+        runners_on_scoring 미수집 시 0건 가능"""
+        resp = build_explorer_query(conn, "batter", "risp", "ops", "desc", "5", season=SEASON)
+        assert len(resp.results) <= 5
+        if len(resp.results) >= 2:
+            assert resp.results[0].primary_stat >= resp.results[1].primary_stat
+            for r in resp.results:
+                assert 2 <= len(r.secondary_stats) <= 3
+
+    def test_vs_lhp_avg_desc_10(self, conn):
+        """7. 타자 + vs_lhp + avg + desc + 10 → 좌투 상대 타율"""
+        resp = build_explorer_query(conn, "batter", "vs_lhp", "avg", "desc", "10", season=SEASON)
+        assert len(resp.results) > 0
+        assert len(resp.results) <= 10
+        assert resp.results[0].primary_stat >= resp.results[1].primary_stat
+
+    def test_home_woba_saber(self, conn):
+        """8. 타자 + home + woba + desc + 5 → 홈 wOBA (세이버 지표!)"""
+        resp = build_explorer_query(conn, "batter", "home", "woba", "desc", "5", season=SEASON)
         assert len(resp.results) == 5
         assert resp.results[0].primary_stat is not None
         assert resp.results[0].primary_stat > 0
+        assert "wrc_plus" in resp.results[0].secondary_stats
 
     def test_leading_wrc_plus(self, conn):
         """리드 상황에서 wRC+ (score_diff 데이터가 없으면 0건 가능)"""
-        resp = build_explorer_query(conn, "batter", "leading", "wrc_plus", "desc", "5")
+        resp = build_explorer_query(conn, "batter", "leading", "wrc_plus", "desc", "5", season=SEASON)
         # score_diff 미수집 시 0건, 수집 시 최대 5건
         assert len(resp.results) <= 5
 
@@ -90,25 +109,25 @@ class TestPitcherAll:
 
     def test_era_asc_5(self, conn):
         """6. 투수 + all + era + asc + 5"""
-        resp = build_explorer_query(conn, "pitcher", "all", "era", "asc", "5")
+        resp = build_explorer_query(conn, "pitcher", "all", "era", "asc", "5", season=SEASON)
         assert len(resp.results) == 5
         # asc: 첫 번째가 가장 낮아야 함
         assert resp.results[0].primary_stat <= resp.results[1].primary_stat
 
     def test_starter_fip_asc_10(self, conn):
         """7. 투수(선발) + all + fip + asc + 10"""
-        resp = build_explorer_query(conn, "pitcher_starter", "all", "fip", "asc", "10")
+        resp = build_explorer_query(conn, "pitcher_starter", "all", "fip", "asc", "10", season=SEASON)
         assert len(resp.results) == 10
         assert resp.results[0].primary_stat <= resp.results[1].primary_stat
 
     def test_bullpen_saves_desc_5(self, conn):
         """8. 투수(불펜) + all + saves + desc + 5"""
-        resp = build_explorer_query(conn, "pitcher_bullpen", "all", "saves", "desc", "5")
+        resp = build_explorer_query(conn, "pitcher_bullpen", "all", "saves", "desc", "5", season=SEASON)
         assert len(resp.results) == 5
 
     def test_pitcher_war_desc_5(self, conn):
         """투수 WAR 상위 5명"""
-        resp = build_explorer_query(conn, "pitcher", "all", "war", "desc", "5")
+        resp = build_explorer_query(conn, "pitcher", "all", "war", "desc", "5", season=SEASON)
         assert len(resp.results) == 5
 
 
@@ -117,16 +136,26 @@ class TestPitcherCondition:
 
     def test_home_era_asc_5(self, conn):
         """투수 + home + era + asc + 5"""
-        resp = build_explorer_query(conn, "pitcher", "home", "era", "asc", "5")
+        resp = build_explorer_query(conn, "pitcher", "home", "era", "asc", "5", season=SEASON)
         assert len(resp.results) == 5
         assert resp.results[0].primary_stat <= resp.results[1].primary_stat
 
     def test_home_fip_computed(self, conn):
         """경로 B에서 FIP 세이버 지표도 정상 계산"""
-        resp = build_explorer_query(conn, "pitcher", "home", "fip", "asc", "5")
+        resp = build_explorer_query(conn, "pitcher", "home", "fip", "asc", "5", season=SEASON)
         assert len(resp.results) == 5
         assert resp.results[0].primary_stat is not None
         assert resp.results[0].primary_stat > 0
+
+    def test_vs_lhb_era_asc_5(self, conn):
+        """9. 투수 + vs_lhb + era + asc + 5 → 좌타 상대 ERA
+        batter_hand 미수집 시 0건 가능"""
+        resp = build_explorer_query(conn, "pitcher", "vs_lhb", "era", "asc", "5", season=SEASON)
+        assert len(resp.results) <= 5
+        if len(resp.results) >= 2:
+            assert resp.results[0].primary_stat <= resp.results[1].primary_stat
+            for r in resp.results:
+                assert 2 <= len(r.secondary_stats) <= 3
 
 
 class TestValidation:
@@ -173,29 +202,29 @@ class TestResponseFormat:
 
     def test_query_params_in_response(self, conn):
         """응답에 query 파라미터 포함"""
-        resp = build_explorer_query(conn, "batter", "all", "avg", "desc", "5")
+        resp = build_explorer_query(conn, "batter", "all", "avg", "desc", "5", season=SEASON)
         assert resp.query.target == "batter"
         assert resp.query.condition == "all"
         assert resp.query.stat == "avg"
         assert resp.query.sort == "desc"
         assert resp.query.limit == "5"
-        assert resp.query.season == 2025
+        assert resp.query.season == SEASON
 
     def test_rank_starts_at_1(self, conn):
         """rank가 1부터 시작"""
-        resp = build_explorer_query(conn, "batter", "all", "avg", "desc", "5")
+        resp = build_explorer_query(conn, "batter", "all", "avg", "desc", "5", season=SEASON)
         assert resp.results[0].rank == 1
         assert resp.results[4].rank == 5
 
     def test_secondary_stats_count(self, conn):
         """보조 지표 2~3개"""
-        resp = build_explorer_query(conn, "batter", "all", "avg", "desc", "5")
+        resp = build_explorer_query(conn, "batter", "all", "avg", "desc", "5", season=SEASON)
         for r in resp.results:
             assert 2 <= len(r.secondary_stats) <= 3
 
     def test_min_pa_filter(self, conn):
         """PA 최소 기준 충족"""
-        resp = build_explorer_query(conn, "batter", "all", "avg", "desc", "all")
+        resp = build_explorer_query(conn, "batter", "all", "avg", "desc", "all", season=SEASON)
         # 모든 결과의 PA가 MIN_PA 이상 (시즌 테이블 기준)
         for r in resp.results:
             assert r.primary_stat is not None

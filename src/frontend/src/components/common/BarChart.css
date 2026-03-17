@@ -1,0 +1,10 @@
+.bar-chart-wrapper {
+  padding: 4px 0;
+}
+
+.chart-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 12px;
+}
