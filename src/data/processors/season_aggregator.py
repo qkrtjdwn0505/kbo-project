@@ -187,7 +187,9 @@ class SeasonAggregator:
                     games=excluded.games, pa=excluded.pa, ab=excluded.ab,
                     hits=excluded.hits, doubles=excluded.doubles,
                     triples=excluded.triples, hr=excluded.hr, rbi=excluded.rbi,
-                    runs=excluded.runs, sb=excluded.sb, cs=excluded.cs,
+                    runs=excluded.runs,
+                    sb=COALESCE(batter_season.sb, excluded.sb),
+                    cs=COALESCE(batter_season.cs, excluded.cs),
                     bb=excluded.bb, hbp=excluded.hbp, so=excluded.so,
                     gdp=excluded.gdp, sf=excluded.sf,
                     avg=excluded.avg, obp=excluded.obp, slg=excluded.slg,
@@ -234,7 +236,8 @@ class SeasonAggregator:
 
         season_str = str(season)
         for col_name, where_clause in splits:
-            rows = conn.execute(f"""
+            rows = conn.execute(
+                """
                 SELECT
                     bs.player_id,
                     SUM(bs.hits)    as hits,
@@ -247,12 +250,14 @@ class SeasonAggregator:
                     SUM(bs.hr)      as hr
                 FROM batter_stats bs
                 JOIN games g ON bs.game_id = g.id
-                WHERE {where_clause}
+                WHERE """ + where_clause + """
                   AND g.date >= ? || '-03-22'
                   AND g.date <= ? || '-10-05'
                   AND g.status = 'final'
                 GROUP BY bs.player_id
-            """, (season_str, season_str)).fetchall()
+                """,
+                (season_str, season_str),
+            ).fetchall()
 
             for row in rows:
                 hits    = row[1] or 0
@@ -271,7 +276,7 @@ class SeasonAggregator:
                 ops = round(obp + slg, 3)
 
                 conn.execute(
-                    f"UPDATE batter_season SET {col_name} = ? WHERE player_id = ? AND season = ?",
+                    "UPDATE batter_season SET " + col_name + " = ? WHERE player_id = ? AND season = ?",
                     (ops, row[0], season),
                 )
 
@@ -416,19 +421,22 @@ class SeasonAggregator:
 
         season_str = str(season)
         for col_name, where_clause in splits:
-            rows = conn.execute(f"""
+            rows = conn.execute(
+                """
                 SELECT
                     ps.player_id,
                     SUM(ps.er)      as er,
                     SUM(ps.ip_outs) as ip_outs
                 FROM pitcher_stats ps
                 JOIN games g ON ps.game_id = g.id
-                WHERE {where_clause}
+                WHERE """ + where_clause + """
                   AND g.date >= ? || '-03-22'
                   AND g.date <= ? || '-10-05'
                   AND g.status = 'final'
                 GROUP BY ps.player_id
-            """, (season_str, season_str)).fetchall()
+                """,
+                (season_str, season_str),
+            ).fetchall()
 
             for row in rows:
                 er      = row[1] or 0
@@ -436,7 +444,7 @@ class SeasonAggregator:
                 era = round((er * 27) / ip_outs, 2) if ip_outs > 0 else 0.0
 
                 conn.execute(
-                    f"UPDATE pitcher_season SET {col_name} = ? WHERE player_id = ? AND season = ?",
+                    "UPDATE pitcher_season SET " + col_name + " = ? WHERE player_id = ? AND season = ?",
                     (era, row[0], season),
                 )
 
