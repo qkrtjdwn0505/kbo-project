@@ -44,6 +44,43 @@ DEFAULT_YEAR = 2025
 START_MONTH = 1
 END_MONTH = 12
 
+# KBO 팀 영문코드 → team_id (KBODataCollector.TEAM_CODE_TO_ID와 동일)
+_TEAM_CODE_TO_INT: dict[str, int] = {
+    "HT": 1, "SS": 2, "LG": 3, "OB": 4, "KT": 5,
+    "SK": 6, "LT": 7, "HH": 8, "NC": 9, "WO": 10,
+}
+
+
+def game_id_to_int(game_id: str) -> int:
+    """KBO API 경기 ID → 충돌 없는 결정론적 정수 변환.
+
+    기존 abs(hash(game_id)) % 10^9 방식의 두 가지 문제를 해결:
+      1) PYTHONHASHSEED 비결정성 — 실행마다 다른 ID 생성
+      2) 더블헤더 충돌 — 같은 날 같은 팀의 두 경기가 같은 ID로 매핑될 가능성
+
+    인코딩: date(8자리) × 10000 + away_id × 100 + home_id × 10 + seq
+    예: "20250510LGSS1" → 20250510 × 10000 + 3×100 + 2×10 + 1 = 202505100321
+        "20250510LGSS2" → 202505100322  ← 다른 ID 보장
+
+    새 ID 범위(~2×10^11)는 기존 hash-기반 ID 범위(~10^9)와 완전히 분리되어
+    기존 DB 레코드를 건드리지 않음.
+    """
+    if len(game_id) >= 13:
+        try:
+            date_part = int(game_id[:8])    # 20250510
+            away_code = game_id[8:10]       # "LG"
+            home_code = game_id[10:12]      # "SS"
+            seq = int(game_id[12])          # 1
+            away_id = _TEAM_CODE_TO_INT.get(away_code, 0)
+            home_id = _TEAM_CODE_TO_INT.get(home_code, 0)
+            if away_id > 0 and home_id > 0:
+                return date_part * 10000 + away_id * 100 + home_id * 10 + seq
+        except (ValueError, IndexError):
+            pass
+    # 폴백: SHA-1 기반 (팀 코드 매핑 실패 시) — 기존/신규 범위와 겹치지 않는 큰 수
+    import hashlib
+    return int(hashlib.sha1(game_id.encode()).hexdigest()[:16], 16)
+
 # 선수 ID 자동 생성용 캐시 (이름+팀 기반)
 _player_id_cache: dict[str, int] = {}
 _next_player_id = 1000
@@ -138,8 +175,8 @@ def save_progress(year: int, progress: dict) -> None:
 def transform_game(game_info: dict) -> dict:
     """GetKboGameList 정규화 데이터 → DB games 형식"""
     game_id = game_info["game_id"]
-    # game_id는 문자열 (예: "20250315LGSK0") → 해시로 정수 변환
-    numeric_id = abs(hash(game_id)) % (10**9)
+    # 결정론적 인코딩 — hash() 비결정성 및 더블헤더 충돌 문제 해결
+    numeric_id = game_id_to_int(game_id)
 
     return {
         "id": numeric_id,
