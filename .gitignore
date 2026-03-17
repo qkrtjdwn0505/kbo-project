@@ -12,8 +12,9 @@ venv/
 node_modules/
 src/frontend/build/
 
-# DB
-*.db
+# DB — kbo.db는 배포를 위해 Git에 포함
+*.db-shm
+*.db-wal
 
 # IDE
 .vscode/

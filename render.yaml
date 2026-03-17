@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: kbo-dashboard
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "uvicorn main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12"
+      - key: NODE_VERSION
+        value: "20"
+      - key: DB_PATH
+        value: "/opt/render/project/src/kbo.db"
+    plan: free
