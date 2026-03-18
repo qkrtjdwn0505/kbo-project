@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./MiniCalendar.css";
 
 const DAY_LABELS = ["일", "월", "화", "수", "목", "금", "토"];
@@ -8,11 +8,20 @@ function pad(n) { return String(n).padStart(2, "0"); }
 export default function MiniCalendar({ selectedDate, onSelect, gameDates = [], onMonthChange }) {
   const today = new Date();
   const initial = selectedDate
-    ? new Date(selectedDate)
+    ? new Date(selectedDate + "T00:00:00")
     : today;
 
   const [year, setYear] = useState(initial.getFullYear());
   const [month, setMonth] = useState(initial.getMonth()); // 0-based
+
+  // selectedDate가 바뀌면 캘린더 월도 따라 이동
+  useEffect(() => {
+    if (selectedDate) {
+      const d = new Date(selectedDate + "T00:00:00");
+      setYear(d.getFullYear());
+      setMonth(d.getMonth());
+    }
+  }, [selectedDate]);
 
   const dateSet = new Set(gameDates);
 

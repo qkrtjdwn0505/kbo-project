@@ -28,15 +28,17 @@ function useFetch(url) {
 }
 
 export function useStandings(season = CURRENT_SEASON) {
-  return useFetch(`${API_BASE}/teams/standings?season=${season}`);
+  return useFetch(season != null ? `${API_BASE}/teams/standings?season=${season}` : null);
 }
 
 export function useTeamComparison(season = CURRENT_SEASON) {
-  return useFetch(`${API_BASE}/teams/comparison?season=${season}`);
+  return useFetch(season != null ? `${API_BASE}/teams/comparison?season=${season}` : null);
 }
 
 export function useTopRankings(stat, limit = 5, season = CURRENT_SEASON) {
   return useFetch(
-    stat ? `${API_BASE}/rankings/top?stat=${stat}&limit=${limit}&season=${season}` : null
+    stat && season != null
+      ? `${API_BASE}/rankings/top?stat=${stat}&limit=${limit}&season=${season}`
+      : null
   );
 }
