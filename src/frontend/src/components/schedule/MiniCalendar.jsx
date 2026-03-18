@@ -5,23 +5,29 @@ const DAY_LABELS = ["일", "월", "화", "수", "목", "금", "토"];
 
 function pad(n) { return String(n).padStart(2, "0"); }
 
-export default function MiniCalendar({ selectedDate, onSelect, gameDates = [], onMonthChange }) {
-  const today = new Date();
-  const initial = selectedDate
-    ? new Date(selectedDate + "T00:00:00")
-    : today;
+function parseYearMonth(ym) {
+  if (!ym) return null;
+  const [y, m] = ym.split("-").map(Number);
+  return { year: y, month: m - 1 }; // month: 0-based
+}
 
-  const [year, setYear] = useState(initial.getFullYear());
-  const [month, setMonth] = useState(initial.getMonth()); // 0-based
+export default function MiniCalendar({ viewMonth, selectedDate, onSelect, gameDates = [], onMonthChange }) {
+  const initial = parseYearMonth(viewMonth) ?? (() => {
+    const t = new Date();
+    return { year: t.getFullYear(), month: t.getMonth() };
+  })();
 
-  // selectedDate가 바뀌면 캘린더 월도 따라 이동
+  const [year, setYear] = useState(initial.year);
+  const [month, setMonth] = useState(initial.month);
+
+  // viewMonth prop이 바뀌면 (◀▶ 또는 외부 제어) 캘린더 표시 월 동기화
   useEffect(() => {
-    if (selectedDate) {
-      const d = new Date(selectedDate + "T00:00:00");
-      setYear(d.getFullYear());
-      setMonth(d.getMonth());
+    const parsed = parseYearMonth(viewMonth);
+    if (parsed) {
+      setYear(parsed.year);
+      setMonth(parsed.month);
     }
-  }, [selectedDate]);
+  }, [viewMonth]);
 
   const dateSet = new Set(gameDates);
 
@@ -36,15 +42,13 @@ export default function MiniCalendar({ selectedDate, onSelect, gameDates = [], o
     onMonthChange?.(`${ny}-${pad(nm + 1)}`);
   }
 
-  // 해당 월의 날짜 계산
-  const firstDay = new Date(year, month, 1).getDay();  // 0=일
+  const firstDay = new Date(year, month, 1).getDay();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const monthStr = `${year}-${pad(month + 1)}`;
 
   const cells = [];
   for (let i = 0; i < firstDay; i++) cells.push(null);
   for (let d = 1; d <= daysInMonth; d++) cells.push(d);
-
-  const monthStr = `${year}-${pad(month + 1)}`;
 
   return (
     <div className="mini-calendar">
@@ -70,7 +74,7 @@ export default function MiniCalendar({ selectedDate, onSelect, gameDates = [], o
               key={dateStr}
               className={[
                 "cal-cell",
-                hasGame ? "has-game" : "",
+                hasGame ? "has-game" : "no-game",
                 isSelected ? "selected" : "",
                 dow === 0 ? "sun" : dow === 6 ? "sat" : "",
               ].filter(Boolean).join(" ")}

@@ -58,6 +58,7 @@
 }
 .cal-cell.has-game { cursor: pointer; }
 .cal-cell.has-game:hover { background: var(--color-border, #edf2f7); }
+.cal-cell.no-game .cal-date { color: var(--color-text-secondary, #a0aec0); }
 .cal-cell.selected {
   background: var(--color-primary, #1a365d);
   color: #fff;
