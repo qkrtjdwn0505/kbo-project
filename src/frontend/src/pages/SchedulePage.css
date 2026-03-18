@@ -1,0 +1,43 @@
+.schedule-page h1 {
+  font-size: 1.75rem;
+  margin-bottom: 20px;
+}
+
+.schedule-layout {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.schedule-calendar {
+  flex-shrink: 0;
+}
+
+.schedule-games {
+  flex: 1;
+  min-width: 0;
+}
+
+.games-date-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--color-text, #1a202c);
+}
+
+.games-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.games-empty {
+  color: var(--color-text-secondary, #718096);
+  padding: 24px 0;
+}
+
+@media (max-width: 640px) {
+  .schedule-layout { flex-direction: column; }
+  .schedule-calendar { width: 100%; }
+  .schedule-calendar .mini-calendar { max-width: 100%; }
+}

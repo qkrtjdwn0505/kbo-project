@@ -34,6 +34,14 @@ function Navbar() {
               순위
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/schedule"
+              className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+            >
+              일정
+            </NavLink>
+          </li>
         </ul>
       </div>
     </nav>

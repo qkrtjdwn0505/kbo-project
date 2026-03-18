@@ -1,0 +1,112 @@
+.game-detail-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 16px;
+}
+
+.game-detail-panel {
+  background: var(--card-bg, #fff);
+  border-radius: 16px;
+  padding: 24px;
+  max-width: 480px;
+  width: 100%;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.gd-close {
+  position: absolute;
+  top: 12px; right: 14px;
+  background: none; border: none;
+  font-size: 1.1rem; cursor: pointer;
+  color: var(--color-text-secondary, #718096);
+}
+
+.gd-scoreline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.gd-team {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.gd-score {
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.gd-sep {
+  font-size: 1.5rem;
+  color: var(--color-text-secondary, #718096);
+}
+
+.gd-meta {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--color-text-secondary, #718096);
+  margin-bottom: 16px;
+}
+
+.gd-section {
+  border-top: 1px solid var(--color-border, #e2e8f0);
+  padding-top: 12px;
+  margin-top: 12px;
+}
+
+.gd-section-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-text-secondary, #718096);
+  margin-bottom: 8px;
+}
+
+.pitcher-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+.pd-label { font-weight: 700; min-width: 16px; }
+.pd-name  { font-weight: 600; }
+.pd-team  { color: var(--color-text-secondary, #718096); font-size: 0.78rem; }
+.pd-stat  { color: var(--color-text-secondary, #718096); font-size: 0.78rem; margin-left: auto; }
+
+.gd-batter-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+.gd-batter-table th {
+  text-align: right;
+  padding: 4px 8px;
+  color: var(--color-text-secondary, #718096);
+  font-weight: 600;
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+}
+.gd-batter-table th:first-child,
+.gd-batter-table th:nth-child(2) { text-align: left; }
+.gd-batter-table td {
+  padding: 5px 8px;
+  text-align: right;
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+}
+.gd-batter-table td:first-child,
+.gd-batter-table td:nth-child(2) { text-align: left; }

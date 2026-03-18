@@ -1,0 +1,75 @@
+.game-card {
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: box-shadow 0.15s;
+}
+.game-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+
+.game-card-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.team-score {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+.team-score:last-child { flex-direction: row-reverse; }
+
+.team-badge {
+  font-size: 0.9rem;
+  font-weight: 700;
+  border-left: 3px solid;
+  padding-left: 6px;
+}
+
+.score-num {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--color-text, #1a202c);
+  min-width: 28px;
+  text-align: center;
+}
+.team-score--winner .score-num { color: var(--color-primary, #1a365d); }
+
+.vs-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 48px;
+}
+.vs-colon {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--color-text-secondary, #718096);
+}
+.game-status {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 10px;
+}
+.status-final { background: #e2e8f0; color: #4a5568; }
+.status-scheduled { background: #bee3f8; color: #2b6cb0; }
+
+.game-card-pitchers {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-border, #e2e8f0);
+  font-size: 0.78rem;
+}
+.pitcher-win { color: #276749; font-weight: 600; }
+.pitcher-lose { color: #9b2c2c; font-weight: 600; }
+
+.game-card-meta {
+  font-size: 0.72rem;
+  color: var(--color-text-secondary, #718096);
+  margin-top: 4px;
+}
