@@ -48,16 +48,17 @@ DEFAULT_DB_PATH = Path(__file__).parent.parent.parent.parent / "kbo.db"
 # 2025 KBO 리그 상수 기본값 (추후 KBReport에서 실측값으로 교체)
 DEFAULT_LC = LeagueConstants(
     season=2025,
-    w_bb=0.69, w_hbp=0.72, w_1b=0.89,
-    w_2b=1.27, w_3b=1.62, w_hr=2.10,
-    woba_scale=1.15,
-    league_woba=0.320,
-    league_obp=0.340,
-    rppa=0.12,
+    # wOBA 가중치 — 2025 KBO 실측 계산값 (calc_league_constants.py)
+    w_bb=0.7229,   w_hbp=0.7544,  w_1b=0.9325,
+    w_2b=1.3306,  w_3b=1.6973,  w_hr=2.2002,
+    woba_scale=1.0303,
+    league_woba=0.3382,
+    league_obp=0.3382,
+    rppa=0.122,
     league_rpw=10.0,
-    league_r_pa=0.12,
-    fip_constant=3.10,
-    league_hr_fb_rate=0.10,
+    league_r_pa=0.122,
+    fip_constant=3.4412,
+    league_hr_fb_rate=0.1,
 )
 
 
