@@ -29,12 +29,14 @@ export default function SchedulePage() {
   const gameDates = useGameDates(viewMonth);
   const { games, loading } = useSchedule(selectedDate);
 
-  // 달력 월이 바뀌면 해당 월 첫 경기일 자동 선택
+  // gameDates가 새로 로드되면 해당 월 최근 경기일 자동 선택
+  // selectedDate를 의존 배열에서 제외: selectedDate가 null로 바뀔 때 구 gameDates로
+  // 이전 달 날짜가 재선택되는 문제 방지
   useEffect(() => {
-    if (gameDates.length > 0 && !selectedDate) {
+    if (gameDates.length > 0) {
       setSelectedDate(getLatestGameDate(gameDates));
     }
-  }, [gameDates, selectedDate]);
+  }, [gameDates]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // 월 이동 시 가장 최근 날짜 자동 선택
   function handleMonthChange(month) {
