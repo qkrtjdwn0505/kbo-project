@@ -1,0 +1,62 @@
+.records-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.rf-toggle {
+  display: flex;
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.rf-btn {
+  padding: 6px 14px;
+  border: none;
+  background: var(--card-bg, #fff);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-secondary, #718096);
+  transition: background 0.12s, color 0.12s;
+}
+
+.rf-btn:not(:last-child) {
+  border-right: 1px solid var(--color-border, #e2e8f0);
+}
+
+.rf-btn.active {
+  background: var(--color-primary, #2b6cb0);
+  color: #fff;
+}
+
+.rf-select {
+  padding: 6px 10px;
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 6px;
+  background: var(--card-bg, #fff);
+  font-size: 0.85rem;
+  color: var(--color-text, #1a202c);
+  cursor: pointer;
+}
+
+.rf-min-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--color-text-secondary, #718096);
+}
+
+.rf-min-input {
+  width: 60px;
+  padding: 4px 8px;
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  text-align: right;
+  background: var(--card-bg, #fff);
+  color: var(--color-text, #1a202c);
+}

@@ -1,0 +1,27 @@
+.records-page h1 {
+  font-size: 1.75rem;
+  margin-bottom: 20px;
+}
+
+.records-filter-card {
+  padding: 14px 20px;
+}
+
+.records-loading {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.records-meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+.records-total {
+  font-size: 0.82rem;
+  color: var(--color-text-secondary, #718096);
+  font-weight: 500;
+}

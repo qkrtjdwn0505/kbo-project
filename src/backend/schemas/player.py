@@ -157,3 +157,65 @@ class PlayerListResponse(BaseModel):
     page: int
     per_page: int
     season: int
+
+
+# ── 기록 조회 ─────────────────────────────────────────────
+
+class RecordPlayer(BaseModel):
+    rank: int
+    player_id: int
+    player_name: str
+    team: str
+    position: str
+    games: int
+    # 타자 클래식
+    pa: Optional[int] = None
+    ab: Optional[int] = None
+    hits: Optional[int] = None
+    hr: Optional[int] = None
+    rbi: Optional[int] = None
+    runs: Optional[int] = None
+    sb: Optional[int] = None
+    bb: Optional[int] = None
+    so: Optional[int] = None
+    avg: Optional[float] = None
+    obp: Optional[float] = None
+    slg: Optional[float] = None
+    ops: Optional[float] = None
+    # 타자 세이버
+    woba: Optional[float] = None
+    wrc_plus: Optional[float] = None
+    war: Optional[float] = None
+    babip: Optional[float] = None
+    iso: Optional[float] = None
+    bb_pct: Optional[float] = None
+    k_pct: Optional[float] = None
+    # 투수 클래식
+    wins: Optional[int] = None
+    losses: Optional[int] = None
+    saves: Optional[int] = None
+    holds: Optional[int] = None
+    ip_display: Optional[str] = None
+    hits_allowed: Optional[int] = None
+    er: Optional[int] = None
+    bb_allowed: Optional[int] = None
+    so_count: Optional[int] = None
+    era: Optional[float] = None
+    whip: Optional[float] = None
+    # 투수 세이버
+    fip: Optional[float] = None
+    xfip: Optional[float] = None
+    lob_pct: Optional[float] = None
+    k_per_9: Optional[float] = None
+    bb_per_9: Optional[float] = None
+    hr_per_9: Optional[float] = None
+    k_bb_ratio: Optional[float] = None
+
+
+class RecordsResponse(BaseModel):
+    type: str
+    season: int
+    total: int
+    page: int
+    per_page: int
+    players: list[RecordPlayer]

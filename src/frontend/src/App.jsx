@@ -6,6 +6,7 @@ import ExplorerPage from "./pages/ExplorerPage";
 import PlayerPage from "./pages/PlayerPage";
 import StandingsPage from "./pages/StandingsPage";
 import SchedulePage from "./pages/SchedulePage";
+import RecordsPage from "./pages/RecordsPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/players/:id" element={<PlayerPage />} />
           <Route path="/standings" element={<StandingsPage />} />
           <Route path="/schedule" element={<SchedulePage />} />
+          <Route path="/records" element={<RecordsPage />} />
         </Routes>
       </main>
       <Footer />

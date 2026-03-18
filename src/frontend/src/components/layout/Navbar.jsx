@@ -42,6 +42,14 @@ function Navbar() {
               일정
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/records"
+              className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+            >
+              기록
+            </NavLink>
+          </li>
         </ul>
       </div>
     </nav>

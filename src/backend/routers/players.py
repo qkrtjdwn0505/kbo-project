@@ -19,6 +19,8 @@ from src.backend.schemas.player import (
     PlayerProfile,
     PlayerSearchItem,
     PlayerSearchResponse,
+    RecordPlayer,
+    RecordsResponse,
     SaberStatsResponse,
     SplitPair,
     SplitsStatsResponse,
@@ -35,6 +37,23 @@ _BATTER_SORT_COLS = {
 _PITCHER_SORT_COLS = {
     "era", "wins", "saves", "holds", "so_count", "whip",
     "fip", "xfip", "war", "bb_allowed", "hr_allowed",
+}
+
+_BATTER_RECORD_SORTS: dict[str, str] = {
+    "games": "bs.games", "pa": "bs.pa", "ab": "bs.ab", "hits": "bs.hits",
+    "hr": "bs.hr", "rbi": "bs.rbi", "runs": "bs.runs", "sb": "bs.sb",
+    "bb": "bs.bb", "so": "bs.so",
+    "avg": "bs.avg", "obp": "bs.obp", "slg": "bs.slg", "ops": "bs.ops",
+    "woba": "bs.woba", "wrc_plus": "bs.wrc_plus", "war": "bs.war",
+    "babip": "bs.babip", "iso": "bs.iso", "bb_pct": "bs.bb_pct", "k_pct": "bs.k_pct",
+}
+_PITCHER_RECORD_SORTS: dict[str, str] = {
+    "games": "ps.games", "wins": "ps.wins", "losses": "ps.losses",
+    "saves": "ps.saves", "holds": "ps.holds", "so_count": "ps.so_count",
+    "era": "ps.era", "whip": "ps.whip", "fip": "ps.fip", "xfip": "ps.xfip",
+    "war": "ps.war", "babip": "ps.babip", "lob_pct": "ps.lob_pct",
+    "k_per_9": "ps.k_per_9", "bb_per_9": "ps.bb_per_9",
+    "hr_per_9": "ps.hr_per_9", "k_bb_ratio": "ps.k_bb_ratio",
 }
 
 
@@ -102,6 +121,136 @@ def search_players(
     return PlayerSearchResponse(
         query=q,
         results=[PlayerSearchItem(**dict(r)) for r in rows],
+    )
+
+
+# ── 기록 조회 ─────────────────────────────────────────────
+# /players/records 는 /players/{player_id} 앞에 등록
+
+@router.get("/players/records", response_model=RecordsResponse)
+def get_player_records(
+    type: str = Query(..., description="batter | pitcher"),
+    season: Optional[int] = Query(None),
+    team: Optional[int] = Query(None),
+    sort: str = Query("war"),
+    order: str = Query("desc"),
+    page: int = Query(1, ge=1),
+    per_page: int = Query(20, ge=1, le=100),
+    min_pa: int = Query(30, ge=0),
+    min_ip: int = Query(10, ge=0),
+    db: Session = Depends(get_db),
+):
+    """전체 선수 기록 테이블 — 클래식/세이버 공통 데이터, 페이지네이션"""
+    if type not in ("batter", "pitcher"):
+        raise HTTPException(status_code=400, detail="type은 batter 또는 pitcher")
+    if order not in ("asc", "desc"):
+        raise HTTPException(status_code=400, detail="order는 asc 또는 desc")
+
+    season = season or get_latest_season(db)
+    order_kw = "DESC" if order == "desc" else "ASC"
+    offset = (page - 1) * per_page
+
+    if type == "batter":
+        sorts = _BATTER_RECORD_SORTS
+        safe_sort = sorts.get(sort, "bs.war")
+        cond_min = "AND bs.pa >= :min_val" if min_pa > 0 else ""
+        cond_team = "AND bs.team_id = :team_id" if team else ""
+        count_sql = text(f"""
+            SELECT COUNT(*) FROM batter_season bs
+            JOIN players p ON bs.player_id = p.id
+            WHERE bs.season = :season {cond_min} {cond_team}
+        """)
+        data_sql = text(f"""
+            SELECT p.id as player_id, p.name as player_name,
+                   t.short_name as team, p.position,
+                   bs.games, bs.pa, bs.ab, bs.hits, bs.hr, bs.rbi,
+                   bs.runs, bs.sb, bs.bb, bs.so,
+                   bs.avg, bs.obp, bs.slg, bs.ops,
+                   bs.woba, bs.wrc_plus, bs.war, bs.babip, bs.iso,
+                   bs.bb_pct, bs.k_pct
+            FROM batter_season bs
+            JOIN players p ON bs.player_id = p.id
+            JOIN teams t ON bs.team_id = t.id
+            WHERE bs.season = :season {cond_min} {cond_team}
+            ORDER BY CASE WHEN {safe_sort} IS NULL THEN 1 ELSE 0 END,
+                     {safe_sort} {order_kw}
+            LIMIT :per_page OFFSET :offset
+        """)
+        params: dict = {"season": season, "per_page": per_page, "offset": offset}
+        if min_pa > 0:
+            params["min_val"] = min_pa
+    else:
+        sorts = _PITCHER_RECORD_SORTS
+        safe_sort = sorts.get(sort, "ps.war")
+        min_outs = min_ip * 3
+        cond_min = "AND ps.ip_outs >= :min_val" if min_ip > 0 else ""
+        cond_team = "AND ps.team_id = :team_id" if team else ""
+        count_sql = text(f"""
+            SELECT COUNT(*) FROM pitcher_season ps
+            JOIN players p ON ps.player_id = p.id
+            WHERE ps.season = :season {cond_min} {cond_team}
+        """)
+        data_sql = text(f"""
+            SELECT p.id as player_id, p.name as player_name,
+                   t.short_name as team, p.position,
+                   ps.games, ps.wins, ps.losses, ps.saves, ps.holds,
+                   ps.ip_outs, ps.hits_allowed, ps.er, ps.bb_allowed, ps.so_count,
+                   ps.era, ps.whip, ps.fip, ps.xfip, ps.war,
+                   ps.babip, ps.lob_pct, ps.k_per_9, ps.bb_per_9,
+                   ps.hr_per_9, ps.k_bb_ratio
+            FROM pitcher_season ps
+            JOIN players p ON ps.player_id = p.id
+            JOIN teams t ON ps.team_id = t.id
+            WHERE ps.season = :season {cond_min} {cond_team}
+            ORDER BY CASE WHEN {safe_sort} IS NULL THEN 1 ELSE 0 END,
+                     {safe_sort} {order_kw}
+            LIMIT :per_page OFFSET :offset
+        """)
+        params = {"season": season, "per_page": per_page, "offset": offset}
+        if min_ip > 0:
+            params["min_val"] = min_outs
+
+    if team:
+        params["team_id"] = team
+
+    total = db.execute(count_sql, params).scalar_one()
+    rows = db.execute(data_sql, params).mappings().all()
+
+    record_list = []
+    for i, r in enumerate(rows):
+        base = dict(player_id=r["player_id"], player_name=r["player_name"],
+                    team=r["team"], position=r["position"],
+                    rank=offset + i + 1, games=r["games"] or 0)
+        if type == "batter":
+            item = RecordPlayer(
+                **base,
+                pa=r["pa"] or 0, ab=r["ab"] or 0, hits=r["hits"] or 0,
+                hr=r["hr"] or 0, rbi=r["rbi"] or 0, runs=r["runs"] or 0,
+                sb=r["sb"] or 0, bb=r["bb"] or 0, so=r["so"] or 0,
+                avg=r["avg"], obp=r["obp"], slg=r["slg"], ops=r["ops"],
+                woba=r["woba"], wrc_plus=r["wrc_plus"], war=r["war"],
+                babip=r["babip"], iso=r["iso"], bb_pct=r["bb_pct"], k_pct=r["k_pct"],
+            )
+        else:
+            ip_outs = r["ip_outs"] or 0
+            item = RecordPlayer(
+                **base,
+                wins=r["wins"] or 0, losses=r["losses"] or 0,
+                saves=r["saves"] or 0, holds=r["holds"] or 0,
+                ip_display=_ip_outs_to_display(ip_outs),
+                hits_allowed=r["hits_allowed"] or 0, er=r["er"] or 0,
+                bb_allowed=r["bb_allowed"] or 0, so_count=r["so_count"] or 0,
+                era=r["era"], whip=r["whip"], fip=r["fip"], xfip=r["xfip"],
+                war=r["war"], babip=r["babip"], lob_pct=r["lob_pct"],
+                k_per_9=r["k_per_9"], bb_per_9=r["bb_per_9"],
+                hr_per_9=r["hr_per_9"], k_bb_ratio=r["k_bb_ratio"],
+            )
+        record_list.append(item)
+
+    return RecordsResponse(
+        type=type, season=season,
+        total=total, page=page, per_page=per_page,
+        players=record_list,
     )
 
 
