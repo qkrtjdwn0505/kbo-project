@@ -50,6 +50,17 @@ _TEAM_CODE_TO_INT: dict[str, int] = {
     "SK": 6, "LT": 7, "HH": 8, "NC": 9, "WO": 10,
 }
 
+# KBO API sr_id → game_type 매핑
+SR_ID_MAP: dict[int, str] = {
+    0: "regular",
+    1: "preseason",
+    3: "postseason",   # 와일드카드
+    4: "postseason",   # 준플레이오프
+    5: "postseason",   # 플레이오프
+    7: "postseason",   # 한국시리즈
+    9: "postseason",   # 기타 포스트시즌
+}
+
 
 def game_id_to_int(game_id: str) -> int:
     """KBO API 경기 ID → 충돌 없는 결정론적 정수 변환.
@@ -190,6 +201,7 @@ def transform_game(game_info: dict) -> dict:
         "status": "final" if game_info.get("status_code") == "3" else "scheduled",
         "day_of_week": get_day_of_week(game_info["date"]),
         "is_night_game": is_night_game(game_info.get("time", "")),
+        "game_type": SR_ID_MAP.get(game_info.get("sr_id", 0), "regular"),
     }
 
 

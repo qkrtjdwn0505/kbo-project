@@ -97,3 +97,10 @@ h1, h2, h3 {
 .flex { display: flex; }
 .gap-4 { gap: 16px; }
 .flex-wrap { flex-wrap: wrap; }
+
+/* ── 모바일 전역 ─────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .main-content { padding: 16px 12px; }
+  .card { padding: 14px; }
+  .mt-8 { margin-top: 20px; }
+}

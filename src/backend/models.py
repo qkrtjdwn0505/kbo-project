@@ -46,6 +46,7 @@ games = Table(
     Column("status", Text),
     Column("day_of_week", Text),
     Column("is_night_game", Boolean),
+    Column("game_type", Text),
 )
 
 batter_stats = Table(

@@ -18,8 +18,8 @@ export default function BatterLineup({ batters, teamName }) {
           </tr>
         </thead>
         <tbody>
-          {active.map((b) => (
-            <tr key={b.player_id} className={b.hr > 0 ? "lt-highlight" : ""}>
+          {active.map((b, i) => (
+            <tr key={`${b.player_id}-${i}`} className={b.hr > 0 ? "lt-highlight" : ""}>
               <td className="lt-left">
                 <Link to={`/players/${b.player_id}`} className="lt-player-link">
                   {b.player_name}

@@ -17,8 +17,8 @@ export default function PitcherLineup({ pitchers, teamName }) {
           </tr>
         </thead>
         <tbody>
-          {pitchers.map((p) => (
-            <tr key={p.player_id} className={p.decision ? "lt-highlight" : ""}>
+          {pitchers.map((p, i) => (
+            <tr key={`${p.player_id}-${i}`} className={p.decision ? "lt-highlight" : ""}>
               <td className="lt-left">
                 <Link to={`/players/${p.player_id}`} className="lt-player-link">
                   {p.player_name}

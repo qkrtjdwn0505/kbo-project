@@ -28,3 +28,6 @@ Thumbs.db
 # 로그
 *.log
 logs/
+kbo_old_check.db
+kbo_b2_test2.py
+kbo_split_test.py

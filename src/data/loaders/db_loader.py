@@ -56,16 +56,18 @@ class DBLoader:
         for g in games:
             cursor.execute("""
                 INSERT INTO games (id, date, time, stadium, home_team_id, away_team_id,
-                    home_score, away_score, status, day_of_week, is_night_game)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    home_score, away_score, status, day_of_week, is_night_game, game_type)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 ON CONFLICT(id) DO UPDATE SET
                     home_score=excluded.home_score, away_score=excluded.away_score,
-                    status=excluded.status
+                    status=excluded.status,
+                    game_type=COALESCE(excluded.game_type, games.game_type, 'regular')
             """, (
                 g["id"], g["date"], g.get("time"), g.get("stadium"),
                 g["home_team_id"], g["away_team_id"],
                 g.get("home_score"), g.get("away_score"),
                 g.get("status", "final"), g.get("day_of_week"), g.get("is_night_game"),
+                g.get("game_type", "regular"),
             ))
             count += 1
 

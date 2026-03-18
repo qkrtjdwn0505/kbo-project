@@ -5,6 +5,7 @@ import RecordsFilter from "../components/records/RecordsFilter";
 import RecordsTable from "../components/records/RecordsTable";
 import Pagination from "../components/records/Pagination";
 import LoadingSpinner from "../components/common/LoadingSpinner";
+import SaberDisclaimer from "../components/common/SaberDisclaimer";
 import "./RecordsPage.css";
 
 const DEFAULT_PARAMS = {
@@ -74,6 +75,7 @@ export default function RecordsPage() {
             </span>
           </div>
 
+          {params.view === "saber" && <SaberDisclaimer />}
           <div className="card mt-4">
             <RecordsTable
               players={players}

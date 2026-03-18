@@ -5,58 +5,85 @@
 }
 .game-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
 
+/* ── 카드 바디: [원정팀] [중앙] [홈팀] ── */
 .game-card-body {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  gap: 8px;
 }
 
-.team-score {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+/* ── 팀 영역 ── */
+.gc-team {
   flex: 1;
+  display: flex;
+  min-width: 0;
 }
-.team-score:last-child { flex-direction: row-reverse; }
+.gc-team--away { justify-content: flex-start; }
+.gc-team--home { justify-content: flex-end; }
 
-.team-badge {
-  font-size: 0.9rem;
+.gc-team-name {
+  font-size: 0.95rem;
   font-weight: 700;
   border-left: 3px solid;
   padding-left: 6px;
+  white-space: nowrap;       /* 팀명 줄바꿈 방지 */
+}
+.gc-team--home .gc-team-name {
+  border-left: none;
+  border-right: 3px solid;
+  padding-left: 0;
+  padding-right: 6px;
 }
 
-.score-num {
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: var(--color-text, #1a202c);
-  min-width: 28px;
-  text-align: center;
-}
-.team-score--winner .score-num { color: var(--color-primary, #1a365d); }
-
-.vs-area {
+/* ── 중앙 영역 ── */
+.gc-center {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
-  min-width: 48px;
+  gap: 4px;
+  min-width: 80px;
+  flex-shrink: 0;
 }
-.vs-colon {
+
+/* 스코어 (종료/진행중) */
+.gc-score {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.gc-score-num {
   font-size: 1.4rem;
   font-weight: 800;
+  color: var(--color-text, #1a202c);
+  min-width: 22px;
+  text-align: center;
+  line-height: 1;
+}
+.gc-score-num.gc-score-win { color: var(--color-primary, #1a365d); }
+.gc-score-sep {
+  font-size: 1.2rem;
+  font-weight: 700;
   color: var(--color-text-secondary, #718096);
 }
-.game-status {
-  font-size: 0.7rem;
+
+/* 뱃지 */
+.gc-badge {
+  font-size: 0.68rem;
   font-weight: 600;
-  padding: 2px 6px;
+  padding: 2px 7px;
   border-radius: 10px;
 }
-.status-final { background: #e2e8f0; color: #4a5568; }
-.status-scheduled { background: #bee3f8; color: #2b6cb0; }
+.gc-badge--final { background: #e2e8f0; color: #4a5568; }
+.gc-badge--live  { background: #fed7d7; color: #c53030; }
 
+/* 예정 시간 */
+.gc-time {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text, #1a202c);
+}
+
+/* ── 승/패 투수 ── */
 .game-card-pitchers {
   display: flex;
   gap: 12px;
@@ -65,11 +92,20 @@
   border-top: 1px solid var(--color-border, #e2e8f0);
   font-size: 0.78rem;
 }
-.pitcher-win { color: #276749; font-weight: 600; }
+.pitcher-win  { color: #276749; font-weight: 600; }
 .pitcher-lose { color: #9b2c2c; font-weight: 600; }
 
+/* ── 구장 ── */
 .game-card-meta {
   font-size: 0.72rem;
   color: var(--color-text-secondary, #718096);
   margin-top: 4px;
+}
+
+/* ── 모바일 ── */
+@media (max-width: 480px) {
+  .gc-team-name { font-size: 0.85rem; }
+  .gc-score-num { font-size: 1.25rem; }
+  .gc-time      { font-size: 0.95rem; }
+  .gc-center    { min-width: 70px; }
 }

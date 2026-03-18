@@ -104,7 +104,7 @@ def get_game_dates(
     rows = db.execute(
         text("""
             SELECT DISTINCT date FROM games
-            WHERE date LIKE :prefix AND status = 'final'
+            WHERE date LIKE :prefix AND status IN ('final', 'scheduled', 'in_progress')
             ORDER BY date
         """),
         {"prefix": f"{month}%"},

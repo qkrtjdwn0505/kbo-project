@@ -4,292 +4,173 @@
 > 이 문서는 design.md의 구현 순서를 구체적인 작업 단위로 분해합니다.
 > 각 작업은 에이전트에게 1회 지시로 완료 가능한 크기입니다.
 > 체크박스로 진행 상황을 추적합니다.
-> 최종 수정일: 2026-03-17
+> 최종 수정일: 2026-03-18
 
 ---
 
-## Phase 1: 기반 구축 (예상 1~2주)
+## Phase 1: 기반 구축 ✅ 완료
 
 ### T-1.1 프로젝트 초기화
 - [x] FastAPI 프로젝트 생성 (main.py, requirements.txt)
-- [x] React 프로젝트 생성 (create-react-app 또는 Vite)
-- [x] 프로젝트 디렉토리 구조 생성 (design.md 섹션 6의 구조대로)
-- [x] .gitignore 설정 (.env, node_modules/, __pycache__/, *.db)
-- [x] .env.example 파일 생성 (DB 경로 등)
-- [x] Git 초기화 + 첫 커밋
+- [x] React 프로젝트 생성 (Vite)
+- [x] 프로젝트 디렉토리 구조 생성
+- [x] .gitignore 설정 (.env, node_modules/, __pycache__/)
+- [x] Git 초기화 + GitHub 연결 (qkrtjdwn0505/kbo-project)
 - [x] ADF 파일 배치 (adf/ 디렉토리)
 
-**완료 조건:** `uvicorn main:app --reload`로 FastAPI 서버 기동, `npm start`로 React 개발 서버 기동
+**기술 스택 확정:** React 19 + Vite + Chart.js / FastAPI + SQLAlchemy / SQLite (kbo.db)
 
 ### T-1.2 DB 스키마 생성
-- [x] SQLite DB 파일 생성
-- [x] teams 테이블 생성 + 10개 구단 초기 데이터 삽입
-- [x] players 테이블 생성 + 인덱스
-- [x] games 테이블 생성 + 인덱스
-- [x] batter_stats 테이블 생성 + 인덱스
-- [x] pitcher_stats 테이블 생성 + 인덱스
-- [x] batter_season 테이블 생성 + 인덱스
-- [x] pitcher_season 테이블 생성 + 인덱스
-- [x] lineups 테이블 생성 + 인덱스
-- [x] league_constants 테이블 생성
-- [x] cheer_songs, player_sns, team_sns 테이블 생성
-- [x] 스키마 생성 스크립트를 src/data/init_db.py로 정리
+- [x] SQLite DB 파일 생성 (kbo.db)
+- [x] teams 테이블 + 10개 구단 초기 데이터
+- [x] players, games, batter_stats, pitcher_stats 테이블
+- [x] batter_season, pitcher_season 테이블
+- [x] lineups 테이블
+- [x] league_constants 테이블
+- [x] games 테이블에 game_type 컬럼 추가 (preseason/regular/postseason)
 
-**완료 조건:** `python init_db.py` 실행 시 모든 테이블이 생성되고, teams에 10개 구단 데이터가 삽입됨
+### T-1.3 데이터 수집 파이프라인
+- [x] kbo_data_collector.py — KBO API 연동 (GetKboGameList, GetBoxScoreScroll)
+- [x] kbo_schedule_collector.py — 일정 수집
+- [x] kbo_season_stats_scraper.py — KBO 기록실 크롤링 (도루 sb/cs 보강)
+- [x] kbo_situation_scraper.py — 기록실 상황별탭 (ops_risp, avg_vs_lhb/rhb 보강)
+- [x] 수집 결과 → DB 저장 (upsert)
 
-### T-1.3 데이터 수집 파이프라인 — kbo-data 연동
-- [x] kbo-data 라이브러리 설치 + Chrome driver 확인
-- [x] kbo_data_collector.py 작성 — 경기 스케줄 수집 함수
-- [x] kbo_data_collector.py — 경기별 타자 기록 수집 함수
-- [x] kbo_data_collector.py — 경기별 투수 기록 수집 함수
-- [x] 수집 결과를 pandas DataFrame으로 변환하는 로직
-- [x] 테스트: 특정 날짜 1경기 데이터 수집 → DataFrame 출력 확인
+**참고:** KBO 박스스코어 API에 도루(sb/cs) 없음 → 기록실 크롤링으로만 보강
 
-**완료 조건:** 지정한 날짜의 KBO 경기 데이터가 DataFrame으로 정상 반환됨
+### T-1.4 초기 데이터 벌크 적재
+- [x] collect_season.py — 시즌 전체 수집 스크립트
+- [x] collect_missing.py — 누락 경기 보충 스크립트
+- [x] 2025 시즌: preseason 42 + regular 720 + postseason 16 = 768경기 수집 완료
+- [x] season_aggregator.py — 경기별 → 시즌 누적 집계 (game_type='regular'만)
 
-### T-1.4 데이터 수집 파이프라인 — DB 저장
-- [x] db_loader.py 작성 — SQLAlchemy 엔진/세션 설정
-- [x] db_loader.py — games 테이블 upsert 함수
-- [x] db_loader.py — batter_stats 테이블 upsert 함수
-- [x] db_loader.py — pitcher_stats 테이블 upsert 함수
-- [x] db_loader.py — players 테이블 upsert 함수 (신규 선수 자동 추가)
-- [x] data_cleaner.py — 결측값 처리, 컬럼명 매핑, 타입 변환
-- [x] 통합 테스트: 수집 → 정제 → DB 저장 → DB 조회로 검증
+**데이터 파이프라인 주의사항:**
+- season_aggregator 재실행 시 sb/cs가 COALESCE로 보존됨 (도루 덮어쓰기 방지)
+- kbo.db를 Git에 포함 (~8MB) → Render 배포 시 자동 포함. DB 변경 후 반드시 `git add kbo.db` + push
 
-**완료 조건:** 수집한 경기 데이터가 SQLite에 정상 저장되고, SELECT로 조회 가능
+### T-1.5 세이버메트릭스 계산 엔진
+- [x] sabermetrics_engine.py — wOBA, wRC+, BABIP, ISO, BB%, K%, FIP, xFIP, K/9, BB/9, HR/9, WAR
+- [x] calc_league_constants.py — 리그 상수 자체 계산 (FIP상수 3.44, league_wOBA 0.338)
+- [x] 167개 데이터 테스트 통과 (세이버 53 + 타석파서 113 + 단일경기 1)
 
-### T-1.5 초기 데이터 벌크 적재
-- [x] 수집 범위 결정 (최소 현재 시즌 or 최근 N시즌)
-- [x] 벌크 수집 스크립트 작성 (날짜 범위 지정 → 전체 수집)
-- [x] 실행 + 에러 처리 (실패 시 재시도, 로그 기록)
-- [x] 적재 후 데이터 건수 확인 (경기 수, 선수 수, 기록 수)
-
-**완료 조건:** DB에 최소 1시즌 분량의 경기/타자/투수 데이터가 적재됨
-
-### T-1.5b 데이터 수집 보강 — table2 파싱 + 재수집
-> T-1.6 구현 중 발견: 현재 batter_stats에 2B/3B/HR/BB/SO가 전부 0.
-> table3에 5개 컬럼(AB,H,RBI,R,AVG)만 있고, 상세 기록은 table2 파싱이 필요.
-> 이 작업 없이는 세이버메트릭스가 동작하지 않음.
-
-- [x] ibb 마이그레이션 실행
-- [x] kbo_data_collector.py — get_boxscore()에서 table2 데이터 반환 포함
-- [x] collect_season.py — transform_batters()에서 at_bat_parser 연동
-- [ ] 투수 HBP 분리 (→ 후순위로 이동, 세이버메트릭스에 영향 미미)
-- [x] 2025 시즌 데이터 재수집 (768경기)
-- [x] 재수집 후 데이터 검증
-
-**현재 상태:** 완료. 디아즈 AVG .314 공식과 일치, OPS ±0.004.
-
-### T-1.6 세이버메트릭스 계산 엔진
-- [x] sabermetrics_engine.py 작성 — wOBA 계산 함수
-- [x] wRC+ 계산 함수
-- [x] BABIP 계산 함수
-- [x] ISO 계산 함수
-- [x] BB%, K% 계산 함수
-- [x] FIP 계산 함수
-- [x] xFIP 계산 함수 (⚠️ FB 미수집으로 None 반환)
-- [x] K/9, BB/9, HR/9 계산 함수
-- [x] WAR 계산 함수 (⚠️ 간소화 버전 — 수비/구장 보정 제외)
-- [ ] league_constants 테이블에 KBO 리그 상수 삽입 (기본값 사용 중)
-- [x] batter_season, pitcher_season 테이블에 계산 결과 저장하는 함수
-- [x] **TDD 테스트:** 161개 단위 테스트 통과
-- [x] **크로스체크:** 디아즈 AVG .314 일치, OPS ±0.004, HR ±2 (경기 누락분)
-
-**완료 조건 달성:** 클래식 스탯 공식과 거의 일치, 세이버메트릭스 합리적 범위 확인.
-
-### Phase 1 알려진 이슈 (Phase 2 이후 수정)
-- [ ] **hash() 비결정적 ID 버그**: game_id를 Python hash()로 생성하여 실행마다 달라짐 → hashlib.md5 등 결정적 해시로 교체 필요
-- [ ] **투수 W/L/SV 미수집**: pitcher_stats.decision 컬럼이 파싱되지 않음 → kbo_data_collector.py 수정 필요
-- [ ] **경기 누락 (~3경기)**: 중복 정리 시 일부 경기 손실 → hash 버그 수정 후 재수집으로 해결
-- [ ] **투수 HBP 분리**: KBO API "4사구" = BB+HBP 합산 → 분리 로직 미구현
-- [ ] **리그 상수 실측값**: league_constants에 기본값 사용 중 → KBReport에서 2025 실측값 확보 필요
-- [ ] **xFIP**: FB(플라이볼) 데이터 미수집으로 None 반환
-- [ ] **WAR 정밀도**: 수비(UZR), 구장 보정(Park Factor) 제외된 간소화 버전
+**알려진 이슈:** 파크팩터 미반영으로 wRC+/WAR가 STATIZ 기준과 차이남. 클래식 지표 + wOBA는 정확.
 
 ---
 
-## Phase 2: MVP 백엔드 (예상 1~2주)
+## Phase 2: MVP 백엔드 ✅ 완료
 
 ### T-2.1 FastAPI 기본 설정
-- [x] CORS 설정 (프론트엔드 개발 서버 허용)
-- [x] DB 세션 의존성 주입 설정 (get_db())
-- [x] 에러 핸들러 (404, 500 공통 포맷)
+- [x] CORS 설정
+- [x] DB 세션 의존성 주입
 - [x] API 라우터 분리 (explorer, players, teams, games)
-- [x] Pydantic 응답 모델 정의 (schemas/explorer.py, player.py, team.py)
+- [x] Pydantic 응답 모델 정의
 
-**완료 조건:** `/docs`에서 Swagger UI 접근 가능, 빈 라우터가 등록됨
-
-### T-2.2 동적 SQL 빌더 구현
-- [x] explorer/query_builder.py — build_explorer_query() 메인 함수 (631줄)
-- [x] _apply_condition() — 조건별 WHERE절 함수 (vs_lhp, risp, home 등)
-- [x] _compute_batter/pitcher_stats() — 지표별 계산 함수
-- [x] 대상별 기본 쿼리 — 경로A(시즌테이블 직접조회) / 경로B(경기별 집계)
-- [x] 정렬 + 제한 로직
-- [x] 보조 지표 2~3개 자동 선택 로직
-
-**완료 조건:** "타자 + 득점권 + OPS + 높은순 + 5명" 같은 조합이 정확한 결과 반환
+### T-2.2 동적 SQL 빌더
+- [x] 경로 A: condition=all → batter_season/pitcher_season 시즌 테이블 직접 조회
+- [x] 경로 B: 조건 필터 → 경기별 스탯 집계 + Python 세이버 재계산
+- [x] 주요 조합 테스트 통과
 
 ### T-2.3 탐색기 API
-- [x] GET `/api/v1/explorer` 엔드포인트 구현
-- [x] 쿼리 파라미터 검증 (잘못된 조합 시 400 에러)
-- [x] 응답 포맷 (rank, player_name, team_name, primary_stat, secondary_stats)
-- [x] GET `/api/v1/explorer/options` — 대상별 가용 지표/조건 목록 반환 API
-
-**완료 조건:** Swagger에서 탐색기 API 호출 시 정확한 JSON 응답
+- [x] GET `/api/v1/explorer` — 복합 조건 질의
 
 ### T-2.4 선수 API
-- [x] GET `/api/v1/players/search` — 자동완성 (이름 LIKE 검색)
-- [x] GET `/api/v1/players/{id}` — 프로필 + 시즌 기본 정보
+- [x] GET `/api/v1/players/search` — 자동완성
 - [x] GET `/api/v1/players/{id}/classic` — 클래식 스탯
 - [x] GET `/api/v1/players/{id}/sabermetrics` — 세이버 스탯
-- [x] GET `/api/v1/players/{id}/splits` — 스플릿 (vs좌/우, 홈/원정, 득점권)
-- [x] GET `/api/v1/players/list` — 선수 목록 (팀/포지션/시즌 필터 + 페이지네이션)
-
-**완료 조건:** 김도영 검색 → 프로필 + 3탭 데이터가 모두 정확히 반환
+- [x] GET `/api/v1/players/{id}/splits` — 스플릿
+- [x] GET `/api/v1/players/records` — 기록 조회 (전체 선수 테이블)
 
 ### T-2.5 순위 API
-- [x] GET `/api/v1/teams/standings` — 팀 순위표 (승/패/무/승률/게임차)
-- [x] GET `/api/v1/teams/comparison` — 팀스탯 비교 카드 4개
-- [x] GET `/api/v1/rankings/top` — 주요 지표별 선수 TOP5
+- [x] GET `/api/v1/standings` — 팀 순위표
+- [x] GET `/api/v1/standings/comparison` — 팀스탯 비교 카드
+- [x] GET `/api/v1/rankings/top` — 주요 지표별 TOP5
+- [x] GET `/api/v1/standings/seasons` — 시즌 목록
 
-**완료 조건:** 팀 순위가 공식 순위와 일치, 팀스탯 카드 4개가 정확한 팀/수치 반환
+### T-2.6 일정/경기 API
+- [x] GET `/api/v1/games/dates` — 월간 경기 일자
+- [x] GET `/api/v1/games/schedule` — 날짜별 경기 목록
+- [x] GET `/api/v1/games/{id}/detail` — 경기 상세 (스코어보드)
+- [x] GET `/api/v1/games/{id}/lineups` — 라인업
 
-### T-2.6 최근 5경기 흐름 계산
-- [x] 팀 순위에 최근 5경기 승패 배열 추가 (recent_5)
-- [x] 연승/연패 계산 로직 (_calc_streak())
-
-**완료 조건:** 순위 API 응답에 recent_5 필드가 ["W","W","L","W","L"] 형태로 포함
+**백엔드 총 103개 API 테스트 통과**
 
 ---
 
-## Phase 3: MVP 프론트엔드 (예상 1~2주)
+## Phase 3: MVP 프론트엔드 ✅ 완료
 
 ### T-3.1 레이아웃 + 라우팅
-- [x] Navbar 컴포넌트 (로고 + 메뉴: 홈, 탐색기, 선수, 순위)
-- [x] React Router 설정 (/, /explorer, /players/:id, /standings)
-- [x] Footer 컴포넌트 (데이터 출처 표기)
-- [x] 공통 스타일 설정 (폰트, 색상, 반응형 기본)
+- [x] Navbar (홈 | 탐색기 | 순위 | 일정 | 기록)
+- [x] React Router 설정
+- [x] 공통 스타일
 
-**완료 조건:** 모든 라우트가 동작하고, Navbar에서 페이지 전환 가능
-
-### T-3.2 공통 컴포넌트
-- [x] useApi.js — 공용 API 호출 훅 (로딩/에러/데이터 상태)
-- [x] formatStat.js — 수치 포맷 유틸 (.328, 3.45, 7.2) + ops_vs_lhp/rhp/risp/home/away AVG_STATS 추가
-- [x] StatTable.jsx — 공용 테이블 (헤더 클릭 정렬, 선수 클릭 링크)
-- [x] BarChart.jsx — Chart.js 막대 그래프 래퍼
-- [x] PlayerLink.jsx — 선수 이름 클릭 → /players/:id
-- [x] LoadingSpinner.jsx
-- [x] ErrorMessage.jsx
-- [x] constants.js — TEAM_COLORS, STAT_TOOLTIPS 추가
-
-**완료 조건:** StatTable에 더미 데이터 넣어서 정렬/클릭 동작 확인
-
-### T-3.3 탐색기 페이지 (핵심)
-- [x] ExplorerPage.jsx + .css — 전체 레이아웃, 조회 조건 요약 배너, 결과 테이블·차트
-- [x] DropdownBar.jsx + .css — 대상/조건/기준스탯/정렬/표시수 5단 드롭다운
-- [x] 대상 변경 시 지표 드롭다운 동적 변경 로직 (target 변경 시 stat 자동 리셋)
-- [x] useExplorer.js — useExplorer() + useExplorerOptions() 2개 훅
-- [x] ResultTable.jsx — primary_stat + secondary_stats flat 변환
-- [x] ResultChart.jsx + .css — BarChart 래퍼 (limit="all" 시 숨김)
-- [x] 현재 질의 요약 표시 ("2025시즌 · 타자 · 전체 · 타율 높은 순 · 상위 10명")
-- [x] 결과 없음 메시지 처리
+### T-3.2 탐색기 페이지 (핵심)
+- [x] ExplorerPage.jsx — 5단 드롭다운 + 결과 테이블 + 차트
+- [x] 대상 변경 시 지표 드롭다운 동적 변경
 - [x] 선수 이름 클릭 → /players/:id 이동
-- [x] constants.js — CONDITION_LABELS, TARGET_LABELS, LIMIT_OPTIONS, SORT_OPTIONS, ops_risp 추가
 
-**완료 조건:** 드롭다운 5개 조합 → API 호출 → 테이블 + 차트가 2초 이내 표시
+### T-3.3 선수 세부정보 페이지
+- [x] PlayerPage.jsx — 검색 + 프로필 헤더 + 3탭 (클래식/세이버/스플릿)
+- [x] 자동완성 검색
 
-### T-3.4 선수 세부정보 페이지
-- [x] PlayerPage.jsx — 전면 재작성 (visitedTabs lazy 로딩)
-- [x] PlayerSearch.jsx + .css — 검색창 + 자동완성 (2글자 이상, 300ms 디바운스)
-- [x] PlayerHeader.jsx + .css — 이니셜 아바타 (팀 색상), 이름, 팀, 포지션, 등번호, SNS 아이콘
-- [x] 탭 전환 UI (클래식 / 세이버메트릭스 / 스플릿)
-- [x] ClassicTab.jsx — 클래식 스탯 그리드 (카운트 2행 + 비율 강조행)
-- [x] SaberTab.jsx — 세이버메트릭스 스탯 그리드 + hover 툴팁
-- [x] SplitsTab.jsx + .css — 그룹별 비교표, 최선값 강조, 0.0 → "—"
-- [x] usePlayer.js — usePlayerProfile/Classic/Saber/Splits/Search 5개 훅
-- [x] StatGrid.css — 공용 스탯 셀/그리드/툴팁 스타일
-- [x] App.jsx — /players (id 없는) 라우트 추가
+### T-3.4 순위 페이지
+- [x] StandingsPage.jsx — 팀 순위 + 팀스탯 카드 + 선수 TOP5
 
-**완료 조건:** 김도영 검색 → 프로필 헤더 + 3탭 전환 동작, 모든 수치 정확히 포맷됨
-
-### T-3.5 순위 페이지
-- [x] StandingsPage.jsx — 순위표 + 팀스탯 비교 + 선수 TOP5 레이아웃
-- [x] TeamRankTable.jsx — 팀 순위 테이블 (최근5경기 흐름 포함)
-- [x] TeamCompareCards.jsx — 공격력/투수력/수비력/주루 1위 카드 4개
-- [x] PlayerRankings.jsx — 주요 지표별 TOP5
-- [x] useStandings.js — useStandings / useTeamComparison / useTopRankings 3개 훅
-
-**완료 조건:** 팀 순위 + 팀스탯 카드 + 선수 TOP5가 한 페이지에 표시
-
-### T-3.6 홈 페이지
-- [x] 히어로 섹션 + 탐색기/순위 바로가기 버튼
-- [x] 팀 순위 미니 (상위 5팀) + 전체보기 링크
-- [x] 주요 지표 TOP3 (타율/홈런/ERA) 미니 랭킹
-- [x] 일정 API 미구현 → 순위 요약으로 대체
-
-**완료 조건:** 홈에서 주요 페이지로 진입 가능
+### T-3.5 홈 페이지
+- [x] Home.jsx — 순위 요약 + 탐색기 바로가기
 
 ---
 
-## Phase 4: 통합 + 배포 (예상 1주)
+## Phase 4: 통합 + 배포 ✅ 완료
 
-### T-4.1 프론트-백엔드 통합
-- [x] FastAPI에서 React 빌드 정적 파일 서빙 설정 (main.py spa_fallback)
-- [x] `npm run build` → FastAPI static files 연결 (vite outDir: "build" 일치)
-- [x] CORS 설정 최종 확인 (localhost:3000, 5173 허용)
-- [ ] 전체 페이지 통합 테스트 (탐색기 → 선수 → 순위 흐름) — 실행 필요
-
-**완료 조건:** 단일 서버에서 프론트 + API가 모두 동작
+### T-4.1 빌드 통합
+- [x] FastAPI에서 React 빌드 정적 파일 서빙
+- [x] `npm run build` → FastAPI static files 연결
 
 ### T-4.2 Render 배포
-- [ ] Render 계정 생성 + 연결
-- [x] render.yaml 작성 (무료 플랜, buildCommand, startCommand 설정)
-- [x] build.sh 작성 (pip install → npm build 순서)
-- [x] 환경 변수 정의 (render.yaml — PYTHON_VERSION, NODE_VERSION, DB_PATH)
-- [ ] 실제 배포 + 동작 확인 — 실행 필요
-- [ ] 커스텀 도메인 (선택)
+- [x] Render 무료 티어 배포 (https://kbo-dashboard.onrender.com)
+- [x] Start Command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
+- [x] UptimeRobot 5분 핑 설정
+- [x] Public Git 연결 → auto-deploy 안됨, Manual Deploy 필요
 
-**완료 조건:** https://xxx.onrender.com에서 서비스 접근 가능
-
-### T-4.3 버그 수정 + 성능
-- [ ] 느린 쿼리 식별 + 인덱스 최적화
-- [ ] 프론트 로딩 속도 확인
-- [ ] 모바일 기본 대응 확인
-- [ ] 에러 케이스 처리 누락 확인
-
-**완료 조건:** 주요 5개 시나리오가 2초 이내 응답, 에러 시 메시지 표시
-
-### T-4.4 배치 자동화
-- [x] daily_update.py 완성 — 4단계 파이프라인 (수집→보강→집계→도루재적용)
-- [x] 실행 로그 기록 (logs/daily_update_YYYYMMDD.log)
-- [x] 날짜 범위/특정 날짜/skip-scraper 옵션 지원
-- [ ] 수동 실행 테스트 → 데이터 갱신 확인 — 실행 필요
-
-**완료 조건:** `python -m src.data.batch.daily_update` 실행 시 새 경기 데이터가 DB에 반영됨
+### T-4.3 배치 자동화
+- [x] daily_update.py 완성 — `python -m src.data.batch.daily_update --season 2026`
 
 ---
 
-## Phase 5: 2순위 기능 (예상 1.5~2주)
+## Phase 5: 2순위 기능 ✅ 완료
 
-### T-5.1 일정/결과 (REQ-04)
-- [ ] GET `/api/v1/games/today` API
-- [ ] GET `/api/v1/games/date/{date}` API
-- [ ] GET `/api/v1/games/{id}` API (스코어보드)
-- [ ] GET `/api/v1/games/{id}/preview` API (선발투수 프리뷰)
-- [ ] SchedulePage.jsx + GameCard.jsx
-- [ ] StarterPreview.jsx (FIP 포함)
-- [ ] CalendarView.jsx
+### T-5.1 일정/결과
+- [x] SchedulePage.jsx — 캘린더 + 날짜별 경기 카드
+- [x] 스코어보드 상세 (이닝별 점수)
+- [x] 라인업 탭
 
-### T-5.2 풀 라인업 (REQ-05)
-- [ ] lineups 데이터 수집 추가 (kbo_web_scraper)
-- [ ] GET `/api/v1/games/{id}/lineups` API
-- [ ] LineupPage.jsx + StarterList/BullpenList/BenchList
-- [ ] 전날 등판 여부 표시 로직
+### T-5.2 기록 조회
+- [x] RecordsPage.jsx — 전체 선수 테이블
+- [x] 클래식 ↔ 세이버 토글
+- [x] 페이지네이션
 
-### T-5.3 기록 조회 (REQ-06)
-- [ ] GET `/api/v1/players/list` API (필터 + 정렬 + 페이지네이션)
-- [ ] RecordsPage.jsx
-- [ ] SaberToggle.jsx (클래식 ↔ 세이버 컬럼 전환)
+**Phase 1~5 총 270개 테스트 통과**
+
+---
+
+## Phase 5.5: 2026 시즌 개막 준비 🔧 진행중
+
+### T-5.5.1 데이터 준비
+- [x] 2026 시범경기 60경기 박스스코어 수집 완료
+- [x] 2026 정규시즌 일정 675경기 DB 저장 완료
+- [x] get_latest_season()이 MAX(season) 반환 → 2026 데이터 들어오면 자동 전환
+
+### T-5.5.2 live_game_poller (실시간 경기 추적)
+- [x] live_game_poller.py 작성 완료 — 경기 중 30초 폴링, at_bat_situations 테이블에 주자/점수/이닝 저장
+- [ ] **개막일(3/28) 실전 테스트** — `--daemon`으로 실행, B_P_NM/T_P_NM 필드가 실제 타자/투수인지 로그 검증
+
+### T-5.5.3 세이버 면책문구
+- [x] 프론트 세이버메트릭스 표시 영역에 면책문구 추가 (SaberDisclaimer.jsx → SaberTab에 적용)
+
+### T-5.5.4 모바일 UI 개선
+- [ ] 탐색기 드롭다운 모바일 대응
+- [ ] 테이블 가로 스크롤 처리
+- [ ] Navbar 모바일 메뉴
 
 ---
 
@@ -303,20 +184,18 @@
 - [ ] FunStatsPage.jsx + HotColdSection.jsx
 
 ### T-6.2 응원가 (REQ-11)
-- [ ] cheer_songs 데이터 수동 입력 (110개 항목)
+- [ ] cheer_songs 데이터 수동 입력 (~110개 항목)
 - [ ] GET `/api/v1/cheer-songs` API
 - [ ] CheerSongsPage.jsx (구단별 탭 + 유튜브 임베드)
 
 ### T-6.3 SNS 허브 (REQ-12)
 - [ ] player_sns, team_sns 데이터 수동 입력
 - [ ] GET `/api/v1/sns/teams` API
-- [ ] GET `/api/v1/sns/teams/{id}/youtube` API (YouTube Data API)
 - [ ] SNSHubPage.jsx
 - [ ] 선수 세부정보 헤더에 SNS 아이콘 연결
 
 ### T-6.4 커뮤니티 + 직관로그 (REQ-09, REQ-10)
 - [ ] users 테이블 + 인증 시스템 (JWT)
-- [ ] POST `/api/v1/auth/register`, `/auth/login`
 - [ ] posts 테이블 + CRUD API
 - [ ] game_logs 테이블 + 직관 기록 API
 - [ ] 직관 통계 계산 (승률, 구장별, 월별)
@@ -324,28 +203,39 @@
 
 ---
 
+## 미해결 이슈 (Backlog)
+
+| 이슈 | 상태 | 비고 |
+|------|------|------|
+| 파크팩터 미반영 | 보류 | wRC+/WAR 차이 원인. 면책문구로 임시 대응 or 파크팩터 구현 |
+| 구단 로고 | 보류 | KBO 저작권 엄격. 팬제작 SVG 아이콘이 안전한 대안 |
+| 탐색기 risp/leading/trailing 조건 | 2026~ | play-by-play 데이터 의존. 2025는 기록실 시즌합산만 가능, 경기별은 2026 폴링부터 |
+| play-by-play API | 확인완료 | KBO에 존재하지 않음. 폴링(live_game_poller)으로 대체 |
+
+---
+
 ## 작업 진행 규칙
 
-### 에이전트에게 지시하는 방법
+### 에이전트 지시 방법 (Claude Code)
 ```
-"@file:design.md의 T-2.2 동적 SQL 빌더를 구현해줘.
-@file:requirements.md의 REQ-01 Acceptance Criteria를 만족하도록.
-@file:adf/03_guidelines/common/code.md의 Python 규칙을 따라."
+지시문(.md)을 Claude.ai에서 작성 → Claude Code에서 구현
+지시문에 @file로 참조파일 명시, 검증 SQL/assert 포함, 커밋 메시지 지정
 ```
 
 ### 커밋 규칙
-- 각 T-번호 완료 시 커밋
-- 커밋 메시지: "T-1.2: DB 스키마 생성 완료"
-- Phase 완료 시 Git 태그: "phase-1-complete"
+- 각 T-번호 완료 시 커밋: "T-1.2: DB 스키마 생성 완료"
+- Phase 완료 시 Git 태그
 
-### 검증 규칙
-- Phase 1 완료 후: 데이터 수집 + 세이버 계산 정확도 검증
-- Phase 2 완료 후: Swagger에서 모든 API 동작 확인
-- Phase 3 완료 후: 브라우저에서 전체 흐름 테스트
-- Phase 4 완료 후: Render 배포 URL에서 동작 확인
+### 배포 규칙
+- Render: push 후 Manual Deploy
+- kbo.db 변경 시 반드시 `git add kbo.db` + push
+- Start Command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
+
+### 검증 주의사항
+- Claude Code가 가끔 잘못 수정하는 경우 있음 (README 경기수 768→720 사건)
+- 검증 assert 필수
 
 ---
 
 > 이 문서는 진행하면서 체크박스를 업데이트합니다.
 > 작업 중 설계 변경이 필요하면 design.md를 먼저 수정하고, 이 문서에 반영합니다.
-> 새로운 작업이 발견되면 해당 Phase에 추가합니다.

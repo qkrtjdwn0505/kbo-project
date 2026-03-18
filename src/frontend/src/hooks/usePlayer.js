@@ -32,15 +32,15 @@ export function usePlayerProfile(playerId) {
 }
 
 export function usePlayerClassic(playerId, season = CURRENT_SEASON) {
-  return useFetch(playerId ? `${API_BASE}/players/${playerId}/classic?season=${season}` : null);
+  return useFetch(playerId && season != null ? `${API_BASE}/players/${playerId}/classic?season=${season}` : null);
 }
 
 export function usePlayerSaber(playerId, season = CURRENT_SEASON) {
-  return useFetch(playerId ? `${API_BASE}/players/${playerId}/sabermetrics?season=${season}` : null);
+  return useFetch(playerId && season != null ? `${API_BASE}/players/${playerId}/sabermetrics?season=${season}` : null);
 }
 
 export function usePlayerSplits(playerId, season = CURRENT_SEASON) {
-  return useFetch(playerId ? `${API_BASE}/players/${playerId}/splits?season=${season}` : null);
+  return useFetch(playerId && season != null ? `${API_BASE}/players/${playerId}/splits?season=${season}` : null);
 }
 
 // 검색 훅 — query는 이미 디바운스된 값을 받음

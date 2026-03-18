@@ -94,8 +94,8 @@ export default function GameDetail({ gameId, onClose }) {
                     </tr>
                   </thead>
                   <tbody>
-                    {top_batters.map((b) => (
-                      <tr key={b.player_id}>
+                    {top_batters.map((b, i) => (
+                      <tr key={`${b.player_id}-${i}`}>
                         <td>{b.name}</td>
                         <td>{b.team}</td>
                         <td>{b.ab}</td>

@@ -131,11 +131,11 @@ class SeasonAggregator:
                 SUM(CASE WHEN bs.ibb IS NOT NULL THEN bs.ibb ELSE 0 END) as ibb
             FROM batter_stats bs
             JOIN games g ON bs.game_id = g.id
-            WHERE g.date >= ? || '-03-22'
-              AND g.date <= ? || '-10-05'
+            WHERE g.date LIKE ? || '%'
+              AND g.game_type = 'regular'
               AND g.status = 'final'
             GROUP BY bs.player_id, bs.team_id
-        """, (str(season), str(season))).fetchall()
+        """, (str(season),)).fetchall()
 
         count = 0
         for r in rows:
@@ -252,12 +252,12 @@ class SeasonAggregator:
                 FROM batter_stats bs
                 JOIN games g ON bs.game_id = g.id
                 WHERE """ + where_clause + """
-                  AND g.date >= ? || '-03-22'
-                  AND g.date <= ? || '-10-05'
+                  AND g.date LIKE ? || '%'
+                  AND g.game_type = 'regular'
                   AND g.status = 'final'
                 GROUP BY bs.player_id
                 """,
-                (season_str, season_str),
+                (season_str,),
             ).fetchall()
 
             for row in rows:
@@ -319,11 +319,11 @@ class SeasonAggregator:
                      THEN 1 ELSE 0 END as is_starter
             FROM pitcher_stats ps
             JOIN games g ON ps.game_id = g.id
-            WHERE g.date >= ? || '-03-22'
-              AND g.date <= ? || '-10-05'
+            WHERE g.date LIKE ? || '%'
+              AND g.game_type = 'regular'
               AND g.status = 'final'
             GROUP BY ps.player_id, ps.team_id
-        """, (str(season), str(season))).fetchall()
+        """, (str(season),)).fetchall()
 
         count = 0
         for r in rows:
@@ -431,12 +431,12 @@ class SeasonAggregator:
                 FROM pitcher_stats ps
                 JOIN games g ON ps.game_id = g.id
                 WHERE """ + where_clause + """
-                  AND g.date >= ? || '-03-22'
-                  AND g.date <= ? || '-10-05'
+                  AND g.date LIKE ? || '%'
+                  AND g.game_type = 'regular'
                   AND g.status = 'final'
                 GROUP BY ps.player_id
                 """,
-                (season_str, season_str),
+                (season_str,),
             ).fetchall()
 
             for row in rows:

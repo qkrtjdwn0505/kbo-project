@@ -12,7 +12,13 @@ import {
   CONDITION_LABELS,
   STAT_LABELS,
 } from "../utils/constants";
+import SaberDisclaimer from "../components/common/SaberDisclaimer";
 import "./ExplorerPage.css";
+
+const SABER_STATS = new Set([
+  "woba", "wrc_plus", "war", "babip", "iso", "bb_pct", "k_pct",
+  "fip", "xfip", "k_per_9", "bb_per_9", "hr_per_9", "k_bb_ratio", "lob_pct",
+]);
 
 function buildQuerySummary(params) {
   const target = TARGET_LABELS[params.target] ?? params.target;
@@ -90,6 +96,7 @@ export default function ExplorerPage() {
 
       {!loading && !error && data && (
         <>
+          {SABER_STATS.has(params.stat) && <SaberDisclaimer />}
           <div className="explorer-result-meta mt-8">
             <span className="result-count">
               {results.length > 0

@@ -3,7 +3,7 @@ import MiniCalendar from "../components/schedule/MiniCalendar";
 import GameCard from "../components/schedule/GameCard";
 import GameDetail from "../components/schedule/GameDetail";
 import LoadingSpinner from "../components/common/LoadingSpinner";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./SchedulePage.css";
 
 function formatDateKo(dateStr) {
@@ -12,13 +12,29 @@ function formatDateKo(dateStr) {
   return `${y}.${m}.${d}`;
 }
 
+function todayStr() {
+  const t = new Date();
+  return `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, "0")}-${String(t.getDate()).padStart(2, "0")}`;
+}
+
 export default function SchedulePage() {
-  const [viewMonth, setViewMonth] = useState("2025-09");
+  const today = todayStr();
+  const initialMonth = today.slice(0, 7);
+  const [viewMonth, setViewMonth] = useState(initialMonth);
   const [selectedDate, setSelectedDate] = useState(null);
   const [activeGameId, setActiveGameId] = useState(null);
 
   const { dates: gameDates, loading: datesLoading } = useGameDates(viewMonth);
   const { games, loading: gamesLoading } = useSchedule(selectedDate);
+
+  // 오늘 달의 경기 날짜 목록 로드 완료 시, 오늘 경기가 있으면 자동 선택
+  useEffect(() => {
+    if (!datesLoading && viewMonth === today.slice(0, 7) && selectedDate === null) {
+      if (gameDates.includes(today)) {
+        setSelectedDate(today);
+      }
+    }
+  }, [gameDates, datesLoading]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // 월 이동: 날짜 초기화 (games는 useSchedule에서 자동 비워짐)
   function handleMonthChange(month) {

@@ -14,11 +14,17 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid var(--color-border);
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .tab-bar-tabs {
   display: flex;
   gap: 4px;
+}
+
+@media (max-width: 480px) {
+  .tab-btn { padding: 10px 12px; font-size: 13px; }
 }
 
 .tab-btn {

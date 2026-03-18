@@ -2,6 +2,7 @@ import { formatStat } from "../../utils/formatStat";
 import { STAT_TOOLTIPS } from "../../utils/constants";
 import LoadingSpinner from "../common/LoadingSpinner";
 import ErrorMessage from "../common/ErrorMessage";
+import SaberDisclaimer from "../common/SaberDisclaimer";
 import "./StatGrid.css";
 import "./SplitsTab.css";
 
@@ -70,6 +71,7 @@ export default function SaberTab({ data, loading, error }) {
   return (
     <div className="saber-tab">
       <div className="tab-season-badge">{stats.season}시즌</div>
+      <SaberDisclaimer />
       <p className="saber-hint">지표 위에 마우스를 올리면 설명이 표시됩니다.</p>
       {player_type === "batter"
         ? <BatterSaber stats={stats} />
