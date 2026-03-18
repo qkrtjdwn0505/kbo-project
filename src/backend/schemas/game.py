@@ -59,3 +59,38 @@ class GameDetail(BaseModel):
     winning_pitcher: Optional[PitcherResult] = None
     losing_pitcher: Optional[PitcherResult] = None
     save_pitcher: Optional[PitcherResult] = None
+
+
+class BatterLineupItem(BaseModel):
+    player_id: int
+    player_name: str
+    position: Optional[str] = None
+    ab: int
+    hits: int
+    rbi: int
+    runs: int
+    hr: int
+    bb: int
+    so: int
+
+
+class PitcherLineupItem(BaseModel):
+    player_id: int
+    player_name: str
+    ip: str
+    hits_allowed: int
+    er: int
+    bb_allowed: int
+    so_count: int
+    decision: Optional[str] = None
+    is_starter: bool = False
+
+
+class LineupResponse(BaseModel):
+    game_id: int
+    home_team: TeamInfo
+    away_team: TeamInfo
+    home_batters: list[BatterLineupItem]
+    away_batters: list[BatterLineupItem]
+    home_pitchers: list[PitcherLineupItem]
+    away_pitchers: list[PitcherLineupItem]

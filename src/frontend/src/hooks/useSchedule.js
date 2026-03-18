@@ -42,3 +42,18 @@ export function useGameDetail(gameId) {
   }, [gameId]);
   return { detail, loading };
 }
+
+export function useGameLineups(gameId) {
+  const [lineup, setLineup] = useState(null);
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    if (!gameId) { setLineup(null); return; }
+    setLoading(true);
+    fetch(`${API_BASE}/games/${gameId}/lineups`)
+      .then((r) => r.json())
+      .then(setLineup)
+      .catch(() => {})
+      .finally(() => setLoading(false));
+  }, [gameId]);
+  return { lineup, loading };
+}

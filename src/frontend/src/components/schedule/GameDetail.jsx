@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { useGameDetail } from "../../hooks/useSchedule";
 import { TEAM_COLORS } from "../../utils/constants";
 import LoadingSpinner from "../common/LoadingSpinner";
+import LineupTab from "./LineupTab";
 import "./GameDetail.css";
 
 function PitcherLine({ label, pitcher }) {
@@ -17,6 +19,7 @@ function PitcherLine({ label, pitcher }) {
 
 export default function GameDetail({ gameId, onClose }) {
   const { detail, loading } = useGameDetail(gameId);
+  const [activeTab, setActiveTab] = useState("summary");
 
   if (loading) return (
     <div className="game-detail-overlay" onClick={onClose}>
@@ -33,7 +36,10 @@ export default function GameDetail({ gameId, onClose }) {
 
   return (
     <div className="game-detail-overlay" onClick={onClose}>
-      <div className="game-detail-panel" onClick={(e) => e.stopPropagation()}>
+      <div
+        className={`game-detail-panel${activeTab === "lineup" ? " gd-wide" : ""}`}
+        onClick={(e) => e.stopPropagation()}
+      >
         <button className="gd-close" onClick={onClose}>✕</button>
 
         {/* 스코어 헤더 */}
@@ -50,41 +56,63 @@ export default function GameDetail({ gameId, onClose }) {
         </div>
         <div className="gd-meta">{game.date} · {game.stadium}</div>
 
-        {/* 투수 */}
-        {(winning_pitcher || losing_pitcher) && (
-          <div className="gd-section">
-            <h4 className="gd-section-title">투수</h4>
-            <PitcherLine label="승" pitcher={winning_pitcher} />
-            <PitcherLine label="패" pitcher={losing_pitcher} />
-            <PitcherLine label="세" pitcher={save_pitcher} />
-          </div>
+        {/* 탭 */}
+        <div className="gd-tabs">
+          <button
+            className={`gd-tab${activeTab === "summary" ? " active" : ""}`}
+            onClick={() => setActiveTab("summary")}
+          >
+            요약
+          </button>
+          <button
+            className={`gd-tab${activeTab === "lineup" ? " active" : ""}`}
+            onClick={() => setActiveTab("lineup")}
+          >
+            라인업
+          </button>
+        </div>
+
+        {/* 요약 탭 */}
+        {activeTab === "summary" && (
+          <>
+            {(winning_pitcher || losing_pitcher) && (
+              <div className="gd-section">
+                <h4 className="gd-section-title">투수</h4>
+                <PitcherLine label="승" pitcher={winning_pitcher} />
+                <PitcherLine label="패" pitcher={losing_pitcher} />
+                <PitcherLine label="세" pitcher={save_pitcher} />
+              </div>
+            )}
+
+            {top_batters.length > 0 && (
+              <div className="gd-section">
+                <h4 className="gd-section-title">주요 타자</h4>
+                <table className="gd-batter-table">
+                  <thead>
+                    <tr>
+                      <th>선수</th><th>팀</th><th>타수</th><th>안타</th><th>홈런</th><th>타점</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {top_batters.map((b) => (
+                      <tr key={b.player_id}>
+                        <td>{b.name}</td>
+                        <td>{b.team}</td>
+                        <td>{b.ab}</td>
+                        <td>{b.hits}</td>
+                        <td>{b.hr || "-"}</td>
+                        <td>{b.rbi}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </>
         )}
 
-        {/* 주요 타자 */}
-        {top_batters.length > 0 && (
-          <div className="gd-section">
-            <h4 className="gd-section-title">주요 타자</h4>
-            <table className="gd-batter-table">
-              <thead>
-                <tr>
-                  <th>선수</th><th>팀</th><th>타수</th><th>안타</th><th>홈런</th><th>타점</th>
-                </tr>
-              </thead>
-              <tbody>
-                {top_batters.map((b) => (
-                  <tr key={b.player_id}>
-                    <td>{b.name}</td>
-                    <td>{b.team}</td>
-                    <td>{b.ab}</td>
-                    <td>{b.hits}</td>
-                    <td>{b.hr || "-"}</td>
-                    <td>{b.rbi}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
+        {/* 라인업 탭 */}
+        {activeTab === "lineup" && <LineupTab gameId={gameId} />}
       </div>
     </div>
   );

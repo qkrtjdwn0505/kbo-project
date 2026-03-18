@@ -8,9 +8,12 @@ from sqlalchemy.orm import Session
 
 from src.backend.database import get_db
 from src.backend.schemas.game import (
+    BatterLineupItem,
     DatesResponse,
     GameDetail,
     GameItem,
+    LineupResponse,
+    PitcherLineupItem,
     PitcherResult,
     ScheduleResponse,
     TeamInfo,
@@ -211,4 +214,88 @@ def get_game_detail(
         winning_pitcher=win_p,
         losing_pitcher=lose_p,
         save_pitcher=save_p,
+    )
+
+
+# ── 경기 라인업 ────────────────────────────────────────────
+
+@router.get("/games/{game_id}/lineups", response_model=LineupResponse)
+def get_game_lineups(
+    game_id: int = Path(...),
+    db: Session = Depends(get_db),
+):
+    """경기 라인업 — 양팀 타자(게임별 집계) + 투수 등판 기록"""
+    row = db.execute(
+        text("""
+            SELECT
+                g.home_team_id, ht.name, ht.short_name,
+                g.away_team_id, at_.name, at_.short_name
+            FROM games g
+            JOIN teams ht  ON g.home_team_id = ht.id
+            JOIN teams at_ ON g.away_team_id = at_.id
+            WHERE g.id = :gid
+        """),
+        {"gid": game_id},
+    ).fetchone()
+    if not row:
+        raise HTTPException(status_code=404, detail="경기를 찾을 수 없습니다")
+
+    home_team = TeamInfo(id=row[0], name=row[1], short_name=row[2])
+    away_team = TeamInfo(id=row[3], name=row[4], short_name=row[5])
+
+    def _get_batters(team_id: int) -> list[BatterLineupItem]:
+        rows = db.execute(
+            text("""
+                SELECT bs.player_id, p.name, p.position,
+                       SUM(bs.ab), SUM(bs.hits), SUM(bs.rbi),
+                       SUM(bs.runs), SUM(bs.hr), SUM(bs.bb), SUM(bs.so)
+                FROM batter_stats bs
+                JOIN players p ON bs.player_id = p.id
+                WHERE bs.game_id = :gid AND bs.team_id = :tid
+                GROUP BY bs.player_id, p.name, p.position
+                ORDER BY SUM(bs.ab) DESC, p.name
+            """),
+            {"gid": game_id, "tid": team_id},
+        ).fetchall()
+        return [
+            BatterLineupItem(
+                player_id=r[0], player_name=r[1], position=r[2],
+                ab=r[3] or 0, hits=r[4] or 0, rbi=r[5] or 0,
+                runs=r[6] or 0, hr=r[7] or 0, bb=r[8] or 0, so=r[9] or 0,
+            )
+            for r in rows
+        ]
+
+    def _get_pitchers(team_id: int) -> list[PitcherLineupItem]:
+        rows = db.execute(
+            text("""
+                SELECT ps.player_id, p.name, ps.ip_outs,
+                       ps.hits_allowed, ps.er, ps.bb_allowed, ps.so_count,
+                       ps.decision, ps.is_starter
+                FROM pitcher_stats ps
+                JOIN players p ON ps.player_id = p.id
+                WHERE ps.game_id = :gid AND ps.team_id = :tid
+                ORDER BY ps.id
+            """),
+            {"gid": game_id, "tid": team_id},
+        ).fetchall()
+        return [
+            PitcherLineupItem(
+                player_id=r[0], player_name=r[1],
+                ip=_outs_to_ip(r[2]),
+                hits_allowed=r[3] or 0, er=r[4] or 0,
+                bb_allowed=r[5] or 0, so_count=r[6] or 0,
+                decision=r[7], is_starter=bool(r[8]),
+            )
+            for r in rows
+        ]
+
+    return LineupResponse(
+        game_id=game_id,
+        home_team=home_team,
+        away_team=away_team,
+        home_batters=_get_batters(home_team.id),
+        away_batters=_get_batters(away_team.id),
+        home_pitchers=_get_pitchers(home_team.id),
+        away_pitchers=_get_pitchers(away_team.id),
     )

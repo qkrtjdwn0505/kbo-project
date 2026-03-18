@@ -110,3 +110,116 @@
 }
 .gd-batter-table td:first-child,
 .gd-batter-table td:nth-child(2) { text-align: left; }
+
+/* 넓은 패널 (라인업 탭) */
+.gd-wide {
+  max-width: 620px;
+}
+
+/* 탭 */
+.gd-tabs {
+  display: flex;
+  gap: 4px;
+  margin: 12px 0 0;
+  border-bottom: 2px solid var(--color-border, #e2e8f0);
+}
+
+.gd-tab {
+  padding: 6px 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-secondary, #718096);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.15s;
+}
+
+.gd-tab.active {
+  color: var(--color-primary, #2b6cb0);
+  border-bottom-color: var(--color-primary, #2b6cb0);
+}
+
+/* 라인업 탭 컨텐츠 */
+.lineup-tab {
+  margin-top: 12px;
+}
+
+.lineup-section-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-text-secondary, #718096);
+  margin: 16px 0 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+  letter-spacing: 0.04em;
+}
+
+.lineup-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.lineup-table th {
+  text-align: right;
+  padding: 3px 6px;
+  color: var(--color-text-secondary, #718096);
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+.lineup-table th.lt-left { text-align: left; }
+
+.lineup-table td {
+  padding: 4px 6px;
+  text-align: right;
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+}
+
+.lineup-table td.lt-left { text-align: left; }
+
+.lineup-table tr:last-child td { border-bottom: none; }
+
+.lt-player-link {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.lt-player-link:hover {
+  color: var(--color-primary, #2b6cb0);
+  text-decoration: underline;
+}
+
+.lt-highlight td {
+  background: var(--color-highlight-bg, #fffbeb);
+}
+
+.lt-starter-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--color-primary, #2b6cb0);
+  border-radius: 3px;
+  padding: 0 3px;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+.lt-decision {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border-radius: 3px;
+  padding: 1px 5px;
+}
+
+.lt-dec-승 { background: #fed7d7; color: #c53030; }
+.lt-dec-패 { background: #bee3f8; color: #2b6cb0; }
+.lt-dec-세 { background: #c6f6d5; color: #276749; }
+.lt-dec-홀드 { background: #e9d8fd; color: #6b46c1; }
