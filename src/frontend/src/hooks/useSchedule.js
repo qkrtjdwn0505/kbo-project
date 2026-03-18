@@ -3,21 +3,24 @@ import { API_BASE } from "../utils/constants";
 
 export function useGameDates(month) {
   const [dates, setDates] = useState([]);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
-    if (!month) return;
+    if (!month) { setDates([]); return; }
+    setLoading(true);
     fetch(`${API_BASE}/games/dates?month=${month}`)
       .then((r) => r.json())
       .then((d) => setDates(d.dates ?? []))
-      .catch(() => {});
+      .catch(() => setDates([]))
+      .finally(() => setLoading(false));
   }, [month]);
-  return dates;
+  return { dates, loading };
 }
 
 export function useSchedule(date) {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    if (!date) return;
+    if (!date) { setGames([]); return; }
     setLoading(true);
     fetch(`${API_BASE}/games/schedule?date=${date}`)
       .then((r) => r.json())
