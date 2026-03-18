@@ -1,0 +1,9 @@
+.season-selector {
+  padding: 4px 8px;
+  font-size: 0.85rem;
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 6px;
+  background: var(--card-bg, #fff);
+  color: var(--text, #1a202c);
+  cursor: pointer;
+}

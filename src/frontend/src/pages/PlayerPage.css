@@ -11,8 +11,14 @@
 /* 탭 버튼 바 */
 .tab-bar {
   display: flex;
-  gap: 4px;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 2px solid var(--color-border);
+}
+
+.tab-bar-tabs {
+  display: flex;
+  gap: 4px;
 }
 
 .tab-btn {

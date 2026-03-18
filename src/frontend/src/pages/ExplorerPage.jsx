@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useExplorer, useExplorerOptions } from "../hooks/useExplorer";
+import { useSeasons } from "../hooks/useSeasons";
 import DropdownBar from "../components/explorer/DropdownBar";
+import SeasonSelector from "../components/common/SeasonSelector";
 import ResultTable from "../components/explorer/ResultTable";
 import ResultChart from "../components/explorer/ResultChart";
 import LoadingSpinner from "../components/common/LoadingSpinner";
@@ -24,8 +26,16 @@ function buildQuerySummary(params) {
 export default function ExplorerPage() {
   const { params, setParam, data, loading, error } = useExplorer();
   const { options } = useExplorerOptions(params.target);
+  const { seasons, currentSeason } = useSeasons();
 
-  // target 변경 시 stat을 해당 타겟의 첫 번째 스탯으로 초기화
+  // 시즌 목록 로드 후 params.season 초기화
+  useEffect(() => {
+    if (currentSeason && params.season !== String(currentSeason)) {
+      setParam("season", String(currentSeason));
+    }
+  }, [currentSeason]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // target 변경 시 stat 초기화
   useEffect(() => {
     if (options.stats.length > 0 && !options.stats.includes(params.stat)) {
       setParam("stat", options.stats[0]);
@@ -37,10 +47,19 @@ export default function ExplorerPage() {
   return (
     <div className="explorer-page">
       <div className="explorer-header">
-        <h1>탐색기</h1>
-        <p className="text-secondary">
-          홈/원정, vs 좌투/우투 등 복합 조건으로 선수 순위를 조회합니다.
-        </p>
+        <div className="explorer-header-row">
+          <div>
+            <h1>탐색기</h1>
+            <p className="text-secondary">
+              홈/원정, vs 좌투/우투 등 복합 조건으로 선수 순위를 조회합니다.
+            </p>
+          </div>
+          <SeasonSelector
+            season={Number(params.season)}
+            setSeason={(s) => setParam("season", String(s))}
+            seasons={seasons}
+          />
+        </div>
       </div>
 
       <div className="card">

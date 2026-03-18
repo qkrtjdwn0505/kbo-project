@@ -1,17 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { CURRENT_SEASON } from "../utils/constants";
 import {
   usePlayerProfile,
   usePlayerClassic,
   usePlayerSaber,
   usePlayerSplits,
 } from "../hooks/usePlayer";
+import { useSeasons } from "../hooks/useSeasons";
 import PlayerSearch from "../components/player/PlayerSearch";
 import PlayerHeader from "../components/player/PlayerHeader";
 import ClassicTab from "../components/player/ClassicTab";
 import SaberTab from "../components/player/SaberTab";
 import SplitsTab from "../components/player/SplitsTab";
+import SeasonSelector from "../components/common/SeasonSelector";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 import ErrorMessage from "../components/common/ErrorMessage";
 import "./PlayerPage.css";
@@ -27,24 +28,37 @@ export default function PlayerPage() {
   const playerId = id ? Number(id) : null;
 
   const [activeTab, setActiveTab] = useState("classic");
-  // 방문한 탭만 데이터 로드 (lazy)
   const [visitedTabs, setVisitedTabs] = useState(new Set(["classic"]));
+
+  const { seasons, currentSeason } = useSeasons();
+  const [season, setSeason] = useState(null);
+
+  useEffect(() => {
+    if (currentSeason && season === null) setSeason(currentSeason);
+  }, [currentSeason, season]);
+
+  // 시즌 변경 시 방문 탭 초기화 → 전부 재로드
+  function handleSeasonChange(s) {
+    setSeason(s);
+    setVisitedTabs(new Set([activeTab]));
+  }
 
   function handleTabChange(tab) {
     setActiveTab(tab);
     setVisitedTabs((prev) => new Set([...prev, tab]));
   }
 
+  const activeSeason = season ?? currentSeason;
+
   const { data: profile, loading: profileLoading, error: profileError } =
     usePlayerProfile(playerId);
 
-  const classicData  = usePlayerClassic(visitedTabs.has("classic")      ? playerId : null, CURRENT_SEASON);
-  const saberData    = usePlayerSaber(  visitedTabs.has("sabermetrics") ? playerId : null, CURRENT_SEASON);
-  const splitsData   = usePlayerSplits( visitedTabs.has("splits")       ? playerId : null, CURRENT_SEASON);
+  const classicData  = usePlayerClassic(visitedTabs.has("classic")      ? playerId : null, activeSeason);
+  const saberData    = usePlayerSaber(  visitedTabs.has("sabermetrics") ? playerId : null, activeSeason);
+  const splitsData   = usePlayerSplits( visitedTabs.has("splits")       ? playerId : null, activeSeason);
 
   return (
     <div className="player-page">
-      {/* 항상 표시되는 검색창 */}
       <div className="player-search-bar">
         <PlayerSearch placeholder="다른 선수 검색..." />
       </div>
@@ -58,20 +72,26 @@ export default function PlayerPage() {
         <>
           <PlayerHeader profile={profile} />
 
-          {/* 탭 전환 */}
+          {/* 시즌 셀렉터 + 탭 전환 */}
           <div className="tab-bar mt-8">
-            {TABS.map((tab) => (
-              <button
-                key={tab.key}
-                className={`tab-btn${activeTab === tab.key ? " tab-btn--active" : ""}`}
-                onClick={() => handleTabChange(tab.key)}
-              >
-                {tab.label}
-              </button>
-            ))}
+            <div className="tab-bar-tabs">
+              {TABS.map((tab) => (
+                <button
+                  key={tab.key}
+                  className={`tab-btn${activeTab === tab.key ? " tab-btn--active" : ""}`}
+                  onClick={() => handleTabChange(tab.key)}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+            <SeasonSelector
+              season={activeSeason}
+              setSeason={handleSeasonChange}
+              seasons={seasons}
+            />
           </div>
 
-          {/* 탭 콘텐츠 */}
           <div className="tab-content card mt-4">
             {activeTab === "classic" && (
               <ClassicTab
@@ -98,7 +118,6 @@ export default function PlayerPage() {
         </>
       )}
 
-      {/* id 없이 접근 시 안내 */}
       {!playerId && !profileLoading && (
         <div className="player-empty">
           <p>위 검색창에서 선수를 검색해 주세요.</p>

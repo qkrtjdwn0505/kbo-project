@@ -41,6 +41,18 @@ _SEASON_END = "-10-05"
 
 
 
+# ── 시즌 목록 ────────────────────────────────────────────
+
+@router.get("/seasons")
+def get_available_seasons(db: Session = Depends(get_db)):
+    """DB에 데이터가 있는 시즌 목록 반환"""
+    rows = db.execute(
+        text("SELECT DISTINCT season FROM batter_season ORDER BY season DESC")
+    ).fetchall()
+    seasons = [r[0] for r in rows]
+    return {"seasons": seasons, "current": seasons[0] if seasons else 2025}
+
+
 # ── 팀 순위표 ────────────────────────────────────────────
 
 @router.get("/teams/standings", response_model=StandingsResponse)

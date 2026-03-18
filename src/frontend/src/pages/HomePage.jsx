@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useStandings } from "../hooks/useStandings";
-import { CURRENT_SEASON } from "../utils/constants";
+import { useSeasons } from "../hooks/useSeasons";
 import TeamRankTable from "../components/standings/TeamRankTable";
 import PlayerRankings from "../components/standings/PlayerRankings";
 import "./HomePage.css";
@@ -12,8 +12,9 @@ const MINI_RANKING_STATS = [
 ];
 
 export default function HomePage() {
+  const { currentSeason } = useSeasons();
   const { data: standingsData, loading: standingsLoading, error: standingsError } =
-    useStandings(CURRENT_SEASON);
+    useStandings(currentSeason);
   const standings = standingsData?.standings ?? [];
 
   return (
@@ -59,7 +60,7 @@ export default function HomePage() {
           <h2 className="section-title-sm">주요 지표 TOP3</h2>
           <Link to="/standings" className="section-link">더보기 →</Link>
         </div>
-        <PlayerRankings limit={3} season={CURRENT_SEASON} stats={MINI_RANKING_STATS} />
+        <PlayerRankings limit={3} season={currentSeason} stats={MINI_RANKING_STATS} />
       </section>
     </div>
   );
