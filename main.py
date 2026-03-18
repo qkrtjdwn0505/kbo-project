@@ -2,7 +2,7 @@
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 
@@ -34,6 +34,11 @@ app.include_router(games.router, prefix="/api/v1", tags=["일정/결과"])
 def health_check():
     """서버 상태 확인"""
     return {"status": "ok", "service": "KBO 데이터 대시보드"}
+
+
+@app.head("/api/health")
+async def health_head():
+    return Response(status_code=200)
 
 
 # 프로덕션: React 빌드 정적 파일 서빙
