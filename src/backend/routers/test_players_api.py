@@ -194,13 +194,17 @@ def test_splits_batter(player_ids):
 
 
 def test_splits_pitcher(player_ids):
-    """투수 스플릿 → splits >= 4, ERA 기준"""
+    """투수 스플릿 → splits >= 4, vs좌타/우타는 avg, 홈/원정은 era"""
     r = client.get(f"/api/v1/players/{player_ids['pitcher_id']}/splits?season=2025")
     assert r.status_code == 200
     data = r.json()
     splits = data["splits"]
     assert len(splits) >= 4
-    assert all(s["stat_name"] == "era" for s in splits)
+    stat_by_label = {s["label"]: s["stat_name"] for s in splits}
+    assert stat_by_label.get("vs 좌타") == "avg"
+    assert stat_by_label.get("vs 우타") == "avg"
+    assert stat_by_label.get("홈") == "era"
+    assert stat_by_label.get("원정") == "era"
 
 
 # ── 선수 목록 ────────────────────────────────────────────

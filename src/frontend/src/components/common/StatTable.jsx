@@ -48,7 +48,7 @@ function StatTable({ columns = [], data = [], onPlayerClick, sortable = true }) 
             <th className="col-team">팀</th>
             {columns.map((col) => (
               <th
-                key={col.key}
+                key={`h-${col.key}`}
                 className={`col-stat${sortable ? " sortable" : ""}${sortKey === col.key ? " sorted" : ""}`}
                 onClick={() => handleSort(col.key)}
                 title={sortable ? "클릭하여 정렬" : undefined}
@@ -79,7 +79,7 @@ function StatTable({ columns = [], data = [], onPlayerClick, sortable = true }) 
               </td>
               <td className="col-team">{row.team_name}</td>
               {columns.map((col) => (
-                <td key={col.key} className="col-stat">
+                <td key={`d-${idx}-${col.key}`} className="col-stat">
                   {formatStat(col.format ?? col.key, row[col.key])}
                 </td>
               ))}

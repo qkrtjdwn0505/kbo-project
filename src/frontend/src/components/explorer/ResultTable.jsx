@@ -20,12 +20,14 @@ export default function ResultTable({ results = [], stat }) {
   // primary stat column
   const primaryCol = { key: stat, label: STAT_LABELS[stat] ?? stat, format: stat };
 
-  // secondary stat columns
-  const secondaryCols = Object.keys(results[0]?.secondary_stats ?? {}).map((k) => ({
-    key: k,
-    label: STAT_LABELS[k] ?? k,
-    format: k,
-  }));
+  // secondary stat columns (primary와 key 중복 방지)
+  const secondaryCols = Object.keys(results[0]?.secondary_stats ?? {})
+    .filter((k) => k !== stat)
+    .map((k) => ({
+      key: k,
+      label: STAT_LABELS[k] ?? k,
+      format: k,
+    }));
 
   const columns = [primaryCol, ...secondaryCols];
 
