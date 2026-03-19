@@ -174,6 +174,19 @@ class KBODataCollector:
             "winning_pitcher_id": raw.get("W_PIT_P_ID"),
             "losing_pitcher_id": raw.get("L_PIT_P_ID"),
             "save_pitcher_id": raw.get("SV_PIT_P_ID"),
+            # 실시간 필드 (live_game_poller용)
+            "GAME_INN_NO": raw.get("GAME_INN_NO"),
+            "GAME_TB_SC": raw.get("GAME_TB_SC"),
+            "OUT_CN": raw.get("OUT_CN"),
+            "B1_BAT_ORDER_NO": raw.get("B1_BAT_ORDER_NO"),
+            "B2_BAT_ORDER_NO": raw.get("B2_BAT_ORDER_NO"),
+            "B3_BAT_ORDER_NO": raw.get("B3_BAT_ORDER_NO"),
+            "T_SCORE_CN": raw.get("T_SCORE_CN"),
+            "B_SCORE_CN": raw.get("B_SCORE_CN"),
+            "B_P_NM": raw.get("B_P_NM"),       # 홈 타자
+            "T_P_NM": raw.get("T_P_NM"),       # 원정 타자
+            "B_PIT_P_NM": raw.get("B_PIT_P_NM"),  # 홈 투수
+            "T_PIT_P_NM": raw.get("T_PIT_P_NM"),  # 원정 투수
         }
 
     # ─── 스코어보드 (이닝별 점수) ──────────────────────

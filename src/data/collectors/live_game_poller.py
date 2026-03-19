@@ -57,7 +57,14 @@ class GameState:
     score_diff_for_batter: int = 0
 
     def update(self, raw: dict) -> None:
-        """GetKboGameList 원본 dict로 상태 갱신"""
+        """정규화된 game dict로 상태 갱신 (실시간 필드 포함)
+
+        KBO API 필드 의미 (2026-03-19 시범경기로 확인):
+          B_P_NM  = 홈 타자,    T_P_NM    = 원정 타자
+          B_PIT_P_NM = 홈 투수, T_PIT_P_NM = 원정 투수
+          초(T): 원정 공격 → T_P_NM이 타자, B_PIT_P_NM이 투수
+          말(B): 홈 공격   → B_P_NM이 타자, T_PIT_P_NM이 투수
+        """
         self.current_inning = int(raw.get("GAME_INN_NO") or 1)
         self.is_top_half = (raw.get("GAME_TB_SC", "T") == "T")
         self.runners = [
@@ -69,25 +76,20 @@ class GameState:
         self.away_score = int(raw.get("T_SCORE_CN") or 0)
         self.out_count = int(raw.get("OUT_CN") or 0)
 
-        # T_P_NM/B_P_NM 의미: T=원정, B=홈 → 초(is_top_half)엔 원정이 공격
         if self.is_top_half:
-            self.current_batter = (raw.get("B_P_NM") or "").strip()   # 홈 투수가 아님 — 원정 타자
-            self.current_pitcher = (raw.get("T_P_NM") or "").strip()
+            # 초: 원정 공격
+            self.current_batter = (raw.get("T_P_NM") or "").strip()
+            self.current_pitcher = (raw.get("B_PIT_P_NM") or "").strip()
             self.batting_team_id = self.away_team_id
             self.pitching_team_id = self.home_team_id
             self.score_diff_for_batter = self.away_score - self.home_score
         else:
-            self.current_batter = (raw.get("T_P_NM") or "").strip()   # 말: 홈 타자
-            self.current_pitcher = (raw.get("B_P_NM") or "").strip()
+            # 말: 홈 공격
+            self.current_batter = (raw.get("B_P_NM") or "").strip()
+            self.current_pitcher = (raw.get("T_PIT_P_NM") or "").strip()
             self.batting_team_id = self.home_team_id
             self.pitching_team_id = self.away_team_id
             self.score_diff_for_batter = self.home_score - self.away_score
-
-    # ── 주의 ──────────────────────────────────────────────────────────────
-    # KBO API에서 B_P_NM과 T_P_NM의 의미가 모호하게 문서화되어 있다.
-    # 실제 응답을 보고 "현재 타자(B_P_NM)" / "현재 투수(T_P_NM)" 인지
-    # 또는 "홈 대표선수 / 원정 대표선수" 인지 확인 후 update()를 수정해야 한다.
-    # 2026 시즌 첫 경기 폴링 후 로그로 검증 필요.
 
 
 # ─── 메인 폴러 ──────────────────────────────────────────────────────────
@@ -317,18 +319,35 @@ class LiveGamePoller:
                 f"{g['away_score']}-{g['home_score']} [{status}]"
             )
 
-        # 종료 경기 1건으로 필드 확인
+        # 종료 경기 1건으로 실시간 필드 확인
         finished = [g for g in games if g["status_code"] == "3"]
+        if not finished:
+            finished = games[:1]  # 진행 중이라도 확인
         if finished:
             sample = finished[0]
-            print(f"\n[TEST] 샘플 raw 필드 (game_id={sample['game_id']}):")
-            for k in ("GAME_INN_NO", "GAME_TB_SC", "OUT_CN",
-                      "B1_BAT_ORDER_NO", "B2_BAT_ORDER_NO", "B3_BAT_ORDER_NO",
-                      "T_SCORE_CN", "B_SCORE_CN", "T_P_NM", "B_P_NM"):
-                # raw는 collector 내부에서 정규화되므로 API를 직접 재호출
-                pass
-            print("  (raw 필드 확인은 collector._request 직접 호출로만 가능)")
-            print(f"  정규화된 필드: {sample}")
+            print(f"\n[TEST] 실시간 필드 (game_id={sample['game_id']}):")
+            live_keys = ["GAME_INN_NO", "GAME_TB_SC", "OUT_CN",
+                         "B1_BAT_ORDER_NO", "B2_BAT_ORDER_NO", "B3_BAT_ORDER_NO",
+                         "T_SCORE_CN", "B_SCORE_CN",
+                         "T_P_NM", "B_P_NM", "T_PIT_P_NM", "B_PIT_P_NM"]
+            for k in live_keys:
+                print(f"  {k}: {sample.get(k)}")
+
+            # GameState 업데이트 테스트
+            state = GameState(
+                game_id=sample["game_id"],
+                home_team_id=sample["home_team_id"],
+                away_team_id=sample["away_team_id"],
+            )
+            state.update(sample)
+            tb = "초" if state.is_top_half else "말"
+            print(f"\n[TEST] GameState 해석:")
+            print(f"  {state.current_inning}회 {tb}")
+            print(f"  타자: {state.current_batter} (팀 {state.batting_team_id})")
+            print(f"  투수: {state.current_pitcher} (팀 {state.pitching_team_id})")
+            print(f"  점수: 원정 {state.away_score} - 홈 {state.home_score}")
+            print(f"  주자: {''.join(['●' if r else '○' for r in state.runners])}")
+            print(f"  타자 시점 점수차: {state.score_diff_for_batter:+d}")
 
         # at_bat_situations 저장 테스트
         print("\n[TEST] at_bat_situations INSERT 테스트")

@@ -74,7 +74,12 @@
   border-radius: 10px;
 }
 .gc-badge--final { background: #e2e8f0; color: #4a5568; }
-.gc-badge--live  { background: #fed7d7; color: #c53030; }
+.gc-badge--live  { background: #fed7d7; color: #c53030; animation: live-pulse 2s ease-in-out infinite; }
+
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
 
 /* 예정 시간 */
 .gc-time {

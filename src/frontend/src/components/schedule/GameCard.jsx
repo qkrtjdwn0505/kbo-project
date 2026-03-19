@@ -41,7 +41,11 @@ export default function GameCard({ game, onClick }) {
                 </span>
               </div>
               <span className={`gc-badge${isInProgress ? " gc-badge--live" : " gc-badge--final"}`}>
-                {isInProgress ? "진행중" : "종료"}
+                {isInProgress
+                  ? (game.live_inning
+                    ? `LIVE ${game.live_inning}회${game.live_inning_half || ""}`
+                    : "LIVE")
+                  : "종료"}
               </span>
             </>
           ) : (

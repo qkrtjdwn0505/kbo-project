@@ -1,9 +1,9 @@
-import { useGameDates, useSchedule } from "../hooks/useSchedule";
+import { useGameDates, useSchedule, useLiveScores } from "../hooks/useSchedule";
 import MiniCalendar from "../components/schedule/MiniCalendar";
 import GameCard from "../components/schedule/GameCard";
 import GameDetail from "../components/schedule/GameDetail";
 import LoadingSpinner from "../components/common/LoadingSpinner";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import "./SchedulePage.css";
 
 function formatDateKo(dateStr) {
@@ -26,6 +26,30 @@ export default function SchedulePage() {
 
   const { dates: gameDates, loading: datesLoading } = useGameDates(viewMonth);
   const { games, loading: gamesLoading } = useSchedule(selectedDate);
+  const { liveData } = useLiveScores(selectedDate, games);
+
+  // SSE 데이터로 경기 목록 머지
+  const mergedGames = useMemo(() => {
+    if (!liveData) return games;
+    return games.map((game) => {
+      // game_id를 KBO 형식으로 매칭하기 위해 liveData를 팀명으로 검색
+      const live = Object.values(liveData).find(
+        (l) =>
+          l.home_team === game.home_team?.short_name &&
+          l.away_team === game.away_team?.short_name
+      );
+      if (!live) return game;
+      const statusMap = { "1": "scheduled", "2": "in_progress", "3": "final" };
+      return {
+        ...game,
+        home_score: live.home_score,
+        away_score: live.away_score,
+        status: statusMap[live.status_code] || game.status,
+        live_inning: live.inning,
+        live_inning_half: live.inning_half,
+      };
+    });
+  }, [games, liveData]);
 
   // 오늘 달의 경기 날짜 목록 로드 완료 시, 오늘 경기가 있으면 자동 선택
   useEffect(() => {
@@ -83,14 +107,14 @@ export default function SchedulePage() {
           {!datesLoading && gamesLoading && <LoadingSpinner />}
 
           {/* 선택 날짜에 경기 없음 */}
-          {!datesLoading && !gamesLoading && selectedDate && games.length === 0 && (
+          {!datesLoading && !gamesLoading && selectedDate && mergedGames.length === 0 && (
             <p className="games-empty">해당 날짜에 경기가 없습니다.</p>
           )}
 
           {/* 경기 목록 */}
-          {!gamesLoading && games.length > 0 && (
+          {!gamesLoading && mergedGames.length > 0 && (
             <div className="games-list">
-              {games.map((game) => (
+              {mergedGames.map((game) => (
                 <GameCard key={game.id} game={game} onClick={setActiveGameId} />
               ))}
             </div>

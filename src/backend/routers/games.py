@@ -1,10 +1,15 @@
 """일정/결과 API"""
 
+import asyncio
+import json
+import logging
+from datetime import datetime
 from typing import Optional
 
-from fastapi import APIRouter, Depends, HTTPException, Path, Query
+from fastapi import APIRouter, Depends, HTTPException, Path, Query, Request
 from sqlalchemy import text
 from sqlalchemy.orm import Session
+from sse_starlette.sse import EventSourceResponse
 
 from src.backend.database import get_db
 from src.backend.schemas.game import (
@@ -299,3 +304,54 @@ def get_game_lineups(
         home_pitchers=_get_pitchers(home_team.id),
         away_pitchers=_get_pitchers(away_team.id),
     )
+
+
+# ── 실시간 스코어 SSE ──────────────────────────────────────
+
+_logger = logging.getLogger(__name__)
+
+_INNING_HALF = {"T": "초", "B": "말"}
+
+
+@router.get("/games/live")
+async def live_scores(request: Request):
+    """SSE 스트림 — 30초마다 오늘 경기 실시간 스코어 전송"""
+
+    async def event_generator():
+        from src.data.collectors.kbo_data_collector import KBODataCollector
+
+        collector = KBODataCollector(delay=0.5)
+        while True:
+            if await request.is_disconnected():
+                _logger.info("SSE 클라이언트 연결 해제")
+                break
+            date_str = datetime.now().strftime("%Y%m%d")
+            try:
+                games = collector.get_game_list(date_str)
+                live_data = []
+                for g in games:
+                    inning = g.get("GAME_INN_NO")
+                    tb = g.get("GAME_TB_SC")
+                    live_data.append({
+                        "game_id": g["game_id"],
+                        "home_team": g["home_team"],
+                        "away_team": g["away_team"],
+                        "home_score": g["home_score"],
+                        "away_score": g["away_score"],
+                        "status_code": str(g["status_code"]),
+                        "inning": int(inning) if inning else None,
+                        "inning_half": _INNING_HALF.get(tb, ""),
+                    })
+                yield {
+                    "event": "scores",
+                    "data": json.dumps(live_data, ensure_ascii=False),
+                }
+            except Exception as e:
+                _logger.warning("SSE 폴링 에러: %s", e)
+                yield {
+                    "event": "error",
+                    "data": json.dumps({"error": str(e)}, ensure_ascii=False),
+                }
+            await asyncio.sleep(30)
+
+    return EventSourceResponse(event_generator())
