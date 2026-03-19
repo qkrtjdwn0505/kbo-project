@@ -26,7 +26,7 @@ export default function SchedulePage() {
 
   const { dates: gameDates, loading: datesLoading } = useGameDates(viewMonth);
   const { games, loading: gamesLoading } = useSchedule(selectedDate);
-  const { liveData } = useLiveScores(selectedDate, games);
+  const { liveData, liveBoxScores } = useLiveScores(selectedDate, games);
 
   // SSE 데이터로 경기 목록 머지
   const mergedGames = useMemo(() => {
@@ -123,7 +123,12 @@ export default function SchedulePage() {
       </div>
 
       {activeGameId && (
-        <GameDetail gameId={activeGameId} onClose={() => setActiveGameId(null)} />
+        <GameDetail
+          gameId={activeGameId}
+          onClose={() => setActiveGameId(null)}
+          liveBoxScores={liveBoxScores}
+          mergedGames={mergedGames}
+        />
       )}
     </div>
   );

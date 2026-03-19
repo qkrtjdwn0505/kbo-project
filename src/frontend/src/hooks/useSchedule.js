@@ -9,6 +9,7 @@ import { API_BASE } from "../utils/constants";
  */
 export function useLiveScores(selectedDate, games) {
   const [liveData, setLiveData] = useState(null);
+  const [liveBoxScores, setLiveBoxScores] = useState(null);
   const esRef = useRef(null);
 
   const cleanup = useCallback(() => {
@@ -26,6 +27,7 @@ export function useLiveScores(selectedDate, games) {
     if (selectedDate !== todayStr) {
       cleanup();
       setLiveData(null);
+      setLiveBoxScores(null);
       return;
     }
 
@@ -53,22 +55,31 @@ export function useLiveScores(selectedDate, games) {
           if (s.status_code !== "3") allDone = false;
         }
         setLiveData(map);
-        // 모든 경기 종료 시 SSE 닫기
         if (allDone && scores.length > 0) {
           cleanup();
         }
       } catch { /* ignore parse errors */ }
     });
 
+    es.addEventListener("boxscore", (e) => {
+      try {
+        const boxes = JSON.parse(e.data);
+        const map = {};
+        for (const b of boxes) {
+          map[b.game_id] = b;
+        }
+        setLiveBoxScores((prev) => ({ ...prev, ...map }));
+      } catch { /* ignore parse errors */ }
+    });
+
     es.onerror = () => {
-      // EventSource는 자동 재연결함
       console.log("SSE 연결 끊김, 재연결 시도 중...");
     };
 
     return cleanup;
   }, [selectedDate, games, cleanup]);
 
-  return { liveData };
+  return { liveData, liveBoxScores };
 }
 
 export function useGameDates(month) {

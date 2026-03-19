@@ -53,12 +53,24 @@ class DatesResponse(BaseModel):
     dates: list[str]
 
 
+class InningScores(BaseModel):
+    away: list[Optional[int]]
+    home: list[Optional[int]]
+
+
+class ScoreboardSummary(BaseModel):
+    away: list[int]  # [R, H, E, B]
+    home: list[int]
+
+
 class GameDetail(BaseModel):
     game: GameItem
     top_batters: list[TopBatter]
     winning_pitcher: Optional[PitcherResult] = None
     losing_pitcher: Optional[PitcherResult] = None
     save_pitcher: Optional[PitcherResult] = None
+    inning_scores: Optional[InningScores] = None
+    summary: Optional[ScoreboardSummary] = None
 
 
 class BatterLineupItem(BaseModel):

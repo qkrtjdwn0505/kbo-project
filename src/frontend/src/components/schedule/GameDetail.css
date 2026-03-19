@@ -223,3 +223,55 @@
 .lt-dec-패 { background: #bee3f8; color: #2b6cb0; }
 .lt-dec-세 { background: #c6f6d5; color: #276749; }
 .lt-dec-홀드 { background: #e9d8fd; color: #6b46c1; }
+
+/* ── LIVE 뱃지 (상세 패널) ── */
+.gd-live-badge {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #c53030;
+  background: #fed7d7;
+  border-radius: 12px;
+  padding: 3px 14px;
+  display: inline-block;
+  margin: 0 auto 8px;
+  width: fit-content;
+  animation: live-pulse 2s ease-in-out infinite;
+}
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* ── 이닝별 점수 테이블 ── */
+.gd-inning-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.gd-inning-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+.gd-inning-table th,
+.gd-inning-table td {
+  padding: 4px 6px;
+  text-align: center;
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+  min-width: 24px;
+}
+.gd-inning-table th {
+  color: var(--color-text-secondary, #718096);
+  font-weight: 600;
+  font-size: 0.72rem;
+}
+.gd-inn-team {
+  text-align: left !important;
+  font-weight: 700;
+  min-width: 36px;
+}
+.gd-inn-sum {
+  font-weight: 700;
+  border-left: 2px solid var(--color-border, #e2e8f0);
+}

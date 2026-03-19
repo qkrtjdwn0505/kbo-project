@@ -17,15 +17,70 @@ from src.backend.schemas.game import (
     DatesResponse,
     GameDetail,
     GameItem,
+    InningScores,
     LineupResponse,
     PitcherLineupItem,
     PitcherResult,
+    ScoreboardSummary,
     ScheduleResponse,
     TeamInfo,
     TopBatter,
 )
 
 router = APIRouter()
+
+# DB team_id → KBO 영문코드 (game_id 복원용)
+_TEAM_ID_TO_CODE = {
+    1: "HT", 2: "SS", 3: "LG", 4: "OB", 5: "KT",
+    6: "SK", 7: "LT", 8: "HH", 9: "NC", 10: "WO",
+}
+
+
+def _fetch_scoreboard(db_game) -> tuple:
+    """DB game row로부터 KBO API 스코어보드 조회. (InningScores, ScoreboardSummary) 또는 (None, None)"""
+    from src.data.collectors.kbo_data_collector import KBODataCollector
+
+    game_date = db_game[1]  # "YYYY-MM-DD"
+    home_tid = db_game[7]
+    away_tid = db_game[10]
+
+    date_str = game_date.replace("-", "")
+    away_code = _TEAM_ID_TO_CODE.get(away_tid, "")
+    home_code = _TEAM_ID_TO_CODE.get(home_tid, "")
+    if not away_code or not home_code:
+        return None, None
+
+    kbo_game_id = f"{date_str}{away_code}{home_code}0"
+
+    # sr_id 결정: 날짜로 game_list에서 찾기 (캐시 없으므로 직접 호출)
+    collector = KBODataCollector(delay=0.3)
+    games = collector.get_game_list(date_str)
+    matched = next((g for g in games if g["game_id"] == kbo_game_id), None)
+
+    if not matched:
+        # 더블헤더 등으로 ID가 다를 수 있음 — 팀 매칭으로 재시도
+        matched = next(
+            (g for g in games
+             if g["home_team_id"] == home_tid and g["away_team_id"] == away_tid),
+            None,
+        )
+
+    if not matched:
+        return None, None
+
+    sb = collector.get_scoreboard(matched["game_id"], matched["sr_id"], matched["season"])
+    if not sb:
+        return None, None
+
+    inning = InningScores(
+        away=sb["inning_scores"]["away"],
+        home=sb["inning_scores"]["home"],
+    )
+    summary = ScoreboardSummary(
+        away=sb["summary"]["away"],
+        home=sb["summary"]["home"],
+    )
+    return inning, summary
 
 
 # ── 헬퍼 ─────────────────────────────────────────────────
@@ -213,12 +268,23 @@ def get_game_detail(
         for r in b_rows
     ]
 
+    # 이닝별 스코어보드 (KBO API에서 가져오기)
+    inning_scores = None
+    summary = None
+    if game_item.status in ("final", "in_progress"):
+        try:
+            inning_scores, summary = _fetch_scoreboard(rows[0])
+        except Exception as e:
+            _logger.warning("스코어보드 조회 실패 game_id=%d: %s", game_id, e)
+
     return GameDetail(
         game=game_item,
         top_batters=top_batters,
         winning_pitcher=win_p,
         losing_pitcher=lose_p,
         save_pitcher=save_p,
+        inning_scores=inning_scores,
+        summary=summary,
     )
 
 
@@ -315,43 +381,87 @@ _INNING_HALF = {"T": "초", "B": "말"}
 
 @router.get("/games/live")
 async def live_scores(request: Request):
-    """SSE 스트림 — 30초마다 오늘 경기 실시간 스코어 전송"""
+    """SSE 스트림 — 점수 30초, 박스스코어 60초 간격 전송"""
 
     async def event_generator():
         from src.data.collectors.kbo_data_collector import KBODataCollector
 
         collector = KBODataCollector(delay=0.5)
+        tick = 0  # 0, 1, 0, 1... — 짝수 틱에만 박스스코어
+
         while True:
             if await request.is_disconnected():
                 _logger.info("SSE 클라이언트 연결 해제")
                 break
+
             date_str = datetime.now().strftime("%Y%m%d")
             try:
                 games = collector.get_game_list(date_str)
                 live_data = []
+                live_game_ids = []
                 for g in games:
                     inning = g.get("GAME_INN_NO")
                     tb = g.get("GAME_TB_SC")
+                    status = str(g["status_code"])
                     live_data.append({
                         "game_id": g["game_id"],
                         "home_team": g["home_team"],
                         "away_team": g["away_team"],
                         "home_score": g["home_score"],
                         "away_score": g["away_score"],
-                        "status_code": str(g["status_code"]),
+                        "status_code": status,
                         "inning": int(inning) if inning else None,
                         "inning_half": _INNING_HALF.get(tb, ""),
                     })
+                    if status == "2":
+                        live_game_ids.append(g)
+
+                # scores 이벤트 (매 30초)
                 yield {
                     "event": "scores",
                     "data": json.dumps(live_data, ensure_ascii=False),
                 }
+
+                # boxscore 이벤트 (매 60초 = 짝수 틱, 진행 중 경기만)
+                if tick % 2 == 0 and live_game_ids:
+                    box_list = []
+                    for g in live_game_ids:
+                        try:
+                            box = collector.get_boxscore(
+                                g["game_id"], g["sr_id"], g["season"]
+                            )
+                            if not box:
+                                continue
+                            sb = collector.get_scoreboard(
+                                g["game_id"], g["sr_id"], g["season"]
+                            )
+                            box_list.append({
+                                "game_id": g["game_id"],
+                                "home_team": g["home_team"],
+                                "away_team": g["away_team"],
+                                "inning_scores": sb["inning_scores"] if sb else None,
+                                "summary": sb["summary"] if sb else None,
+                                "home_batters": box["home_batters"],
+                                "away_batters": box["away_batters"],
+                                "home_pitchers": box["home_pitchers"],
+                                "away_pitchers": box["away_pitchers"],
+                            })
+                        except Exception as e:
+                            _logger.warning("박스스코어 수집 실패 %s: %s", g["game_id"], e)
+                    if box_list:
+                        yield {
+                            "event": "boxscore",
+                            "data": json.dumps(box_list, ensure_ascii=False),
+                        }
+
             except Exception as e:
                 _logger.warning("SSE 폴링 에러: %s", e)
                 yield {
                     "event": "error",
                     "data": json.dumps({"error": str(e)}, ensure_ascii=False),
                 }
+
+            tick += 1
             await asyncio.sleep(30)
 
     return EventSourceResponse(event_generator())
